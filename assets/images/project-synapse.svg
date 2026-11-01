@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="syBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#110e2e" />
+      <stop offset="100%" stop-color="#050314" />
+    </linearGradient>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#syBg)" rx="12" />
+
+  <!-- App Header -->
+  <rect width="600" height="42" fill="#1e1847" rx="12" />
+  <rect y="30" width="600" height="12" fill="#1e1847" />
+  <circle cx="25" cy="21" r="5" fill="#ef4444" />
+  <circle cx="42" cy="21" r="5" fill="#f59e0b" />
+  <circle cx="59" cy="21" r="5" fill="#10b981" />
+  <text x="300" y="26" fill="#c084fc" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">SynapseAI // Semantic Neural RAG Pipeline</text>
+
+  <!-- Left Chat Panel -->
+  <rect x="35" y="60" width="310" height="240" rx="8" fill="#171239" stroke="#372d6e" />
+  
+  <!-- User Prompt Message -->
+  <rect x="55" y="80" width="220" height="40" rx="10" fill="#312566" />
+  <text x="70" y="104" fill="#f5f3ff" font-family="'Inter', sans-serif" font-size="11">Explain Zero-Knowledge Cryptography</text>
+
+  <!-- AI Response Message -->
+  <rect x="80" y="135" width="250" height="110" rx="10" fill="#251c54" stroke="#6366f1" stroke-width="1.2" />
+  <circle cx="100" cy="155" r="10" fill="url(#aiGradient)" />
+  <text x="100" y="159" fill="#ffffff" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">AI</text>
+  <text x="120" y="158" fill="#c4b5fd" font-family="'Inter', sans-serif" font-size="11" font-weight="600">Synapse Neural Agent</text>
+  <text x="95" y="180" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10.5">A Zero-Knowledge Proof allows a prover</text>
+  <text x="95" y="198" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10.5">to prove a statement is true without</text>
+  <text x="95" y="216" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10.5">revealing any secret information.</text>
+  <text x="95" y="234" fill="#a78bfa" font-family="'JetBrains Mono', monospace" font-size="9.5">Vector Match Score: 0.984 | Latency: 180ms</text>
+
+  <!-- Right Knowledge Graph / Embeddings Panel -->
+  <rect x="360" y="60" width="205" height="240" rx="8" fill="#171239" stroke="#372d6e" />
+  <text x="375" y="85" fill="#e9d5ff" font-family="'Inter', sans-serif" font-size="11" font-weight="600">Vector Embeddings Space</text>
+  
+  <!-- Embedding Graph Nodes -->
+  <circle cx="460" cy="170" r="28" fill="#312566" stroke="#c084fc" stroke-width="2" />
+  <circle cx="460" cy="170" r="12" fill="url(#aiGradient)" />
+  
+  <circle cx="400" cy="120" r="10" fill="#3b82f6" opacity="0.8" />
+  <circle cx="520" cy="120" r="12" fill="#10b981" opacity="0.8" />
+  <circle cx="410" cy="230" r="14" fill="#f43f5e" opacity="0.8" />
+  <circle cx="510" cy="225" r="9" fill="#00f2fe" opacity="0.8" />
+
+  <!-- Connecting Graph Edges -->
+  <line x1="460" y1="170" x2="400" y2="120" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 3" />
+  <line x1="460" y1="170" x2="520" y2="120" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 3" />
+  <line x1="460" y1="170" x2="410" y2="230" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 3" />
+  <line x1="460" y1="170" x2="510" y2="225" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3 3" />
+
+  <text x="375" y="280" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="10">FAISS Index: 1.2M Docs</text>
+
+  <!-- Bottom Tech Bar -->
+  <rect x="35" y="315" width="530" height="38" rx="6" fill="#1e1847" stroke="#372d6e" />
+  <text x="50" y="339" fill="#c084fc" font-family="'JetBrains Mono', monospace" font-size="11">Architecture: Python 3.11 // PyTorch // LangChain // FastEmbed // WebSockets</text>
+</svg>

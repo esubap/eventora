@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1e" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="cyanLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#065f46" />
+    </linearGradient>
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#nsBg)" rx="12" />
+  
+  <!-- Window Header -->
+  <rect width="600" height="42" fill="#0f172a" rx="12" />
+  <rect y="30" width="600" height="12" fill="#0f172a" />
+  <circle cx="25" cy="21" r="5" fill="#ef4444" />
+  <circle cx="42" cy="21" r="5" fill="#f59e0b" />
+  <circle cx="59" cy="21" r="5" fill="#10b981" />
+  <text x="300" y="26" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">neuroshield-ai // threat_detection_core.py</text>
+  
+  <!-- Cyber Grid -->
+  <path d="M 40 80 H 560 M 40 140 H 560 M 40 200 H 560 M 40 260 H 560 M 40 320 H 560" stroke="#1e293b" stroke-width="1" />
+  <path d="M 100 55 V 345 M 200 55 V 345 M 300 55 V 345 M 400 55 V 345 M 500 55 V 345" stroke="#1e293b" stroke-width="1" />
+
+  <!-- Neural Network Connections -->
+  <path d="M 120 180 Q 200 110, 300 170 T 480 130" fill="none" stroke="url(#cyanLine)" stroke-width="2.5" filter="url(#glowEffect)" />
+  <path d="M 120 230 Q 220 290, 310 210 T 490 260" fill="none" stroke="#a855f7" stroke-width="2" opacity="0.8" />
+  <path d="M 150 120 L 260 220 L 380 140 L 460 210" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4" opacity="0.6" />
+
+  <!-- Threat Shield Central Node -->
+  <g transform="translate(260, 130)">
+    <circle cx="40" cy="40" r="48" fill="#030712" stroke="#10b981" stroke-width="2" />
+    <path d="M 40 18 L 62 28 V 46 C 62 58 40 68 40 68 C 40 68 18 58 18 46 V 28 Z" fill="url(#shieldGrad)" />
+    <path d="M 32 40 L 38 46 L 50 32" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Network Nodes with Pulse -->
+  <circle cx="120" cy="180" r="8" fill="#00f2fe" />
+  <circle cx="120" cy="180" r="14" fill="none" stroke="#00f2fe" stroke-width="1" opacity="0.6" />
+
+  <circle cx="210" cy="120" r="7" fill="#a855f7" />
+  <circle cx="390" cy="130" r="8" fill="#00f2fe" />
+  <circle cx="480" cy="130" r="6" fill="#10b981" />
+  
+  <circle cx="120" cy="230" r="6" fill="#ec4899" />
+  <circle cx="220" cy="270" r="7" fill="#f59e0b" />
+  <circle cx="490" cy="260" r="7" fill="#00f2fe" />
+
+  <!-- Metric Badges Bottom -->
+  <rect x="40" y="320" width="150" height="32" rx="6" fill="#0f172a" stroke="#1e293b" />
+  <circle cx="56" cy="336" r="4" fill="#10b981" />
+  <text x="68" y="340" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="11">DDoS Mitigated: 99.8%</text>
+
+  <rect x="210" y="320" width="170" height="32" rx="6" fill="#0f172a" stroke="#1e293b" />
+  <circle cx="226" cy="336" r="4" fill="#00f2fe" />
+  <text x="238" y="340" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="11">Latency: 2.1ms (AI-Opt)</text>
+
+  <rect x="400" y="320" width="160" height="32" rx="6" fill="#0f172a" stroke="#1e293b" />
+  <circle cx="416" cy="336" r="4" fill="#a855f7" />
+  <text x="428" y="340" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="11">Packets/Sec: 142.5k</text>
+</svg>
