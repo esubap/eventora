@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Esubalew Shenkute - Senior Full-Stack Engineer, AI Developer &amp; Cybersecurity Specialist. Portfolio showcasing enterprise software, network tools, and intelligent systems.">
+  <meta name="keywords" content="Esubalew Shenkute, Portfolio, Full-Stack Developer, Cybersecurity, Python, Java, JavaScript, Networking, AI, Machine Learning, esubap">
+  <meta name="author" content="Esubalew Shenkute">
+  <title>Esubalew Shenkute | Full-Stack Engineer &amp; Cybersecurity Specialist</title>
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons (Free CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Ambient Particle Canvas & Background Glow Orbs -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-orb ambient-orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb ambient-orb-2" aria-hidden="true"></div>
+  <div class="ambient-orb ambient-orb-3" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       Header & Navigation Bar
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-wrapper">
+      <!-- Brand Logo -->
+      <a href="#hero" class="logo" aria-label="Esubalew Shenkute Portfolio Home">
+        <span class="logo-badge"><i class="fa-solid fa-terminal"></i></span>
+        <span>Esubalew<span class="logo-tag">.dev</span></span>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certificates" class="nav-link">Certificates</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Button & Hamburger -->
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-paper-plane"></i> Let's Talk
+        </a>
+
+        <!-- Mobile Hamburger Trigger -->
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+  <aside class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+    <ul class="mobile-nav-menu">
+      <li><a href="#hero" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#about" class="mobile-nav-link"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#education" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+      <li><a href="#skills" class="mobile-nav-link"><i class="fa-solid fa-code"></i> Skills</a></li>
+      <li><a href="#projects" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a></li>
+      <li><a href="#certificates" class="mobile-nav-link"><i class="fa-solid fa-award"></i> Certificates</a></li>
+      <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div style="margin-top: auto;">
+      <a href="#contact" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-solid fa-paper-plane"></i> Get In Touch
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       Hero Section
+       ========================================================================== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Hero Information Left -->
+        <div class="hero-content reveal-init">
+          <div class="status-pill">
+            <span class="status-dot animate-pulse-dot"></span>
+            <span class="status-text">Available for New Opportunities</span>
+          </div>
+
+          <p class="hero-greeting">&lt;Hello World! I am /&gt;</p>
+          <h1 class="hero-name">Esubalew <span class="text-gradient">Shenkute</span></h1>
+
+          <div class="hero-role-wrapper">
+            <span>Specializing in</span>
+            <span class="typewriter-text" id="typewriter-output">Full-Stack Software Engineer</span>
+          </div>
+
+          <p class="hero-bio">
+            Passionate full-stack developer, cybersecurity engineer, and AI builder. 
+            I build resilient enterprise systems, train intelligent neural models, and secure mission-critical network architectures.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-rocket"></i> Explore Projects
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa-solid fa-envelope"></i> Contact Me
+            </a>
+            <a href="mailto:sesuba21@gmail.com?subject=Resume%20Request%20-%20Esubalew%20Shenkute" class="btn btn-outline" download>
+              <i class="fa-solid fa-file-arrow-down"></i> Resume (CV)
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="hero-socials">
+            <a href="https://github.com/esubap" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile (@esubap)">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/esubap" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile (@esubap)">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://x.com/esubap" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X / Twitter Profile (@esubap)">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://t.me/esubap" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram Profile (@esubap)">
+              <i class="fa-brands fa-telegram"></i>
+            </a>
+            <a href="https://wa.me/251903974728" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp (+251903974728)">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:sesuba21@gmail.com" class="social-link" aria-label="Direct Email (sesuba21@gmail.com)">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Avatar Right -->
+        <div class="hero-avatar-wrapper reveal-init reveal-delay-1">
+          <div class="avatar-container">
+            <!-- Animated Glowing Outer Rings -->
+            <div class="avatar-ring-outer animate-spin-slow"></div>
+            <div class="avatar-ring-inner"></div>
+
+            <!-- Avatar Picture Frame -->
+            <div class="avatar-frame">
+              <img src="assets/images/profile.jpg" alt="Esubalew Shenkute - Profile Photo" class="avatar-img">
+            </div>
+
+            <!-- Floating Tech Badges -->
+            <div class="floating-badge badge-top-left animate-float">
+              <i class="fa-solid fa-code"></i> Full-Stack
+            </div>
+            <div class="floating-badge badge-top-right animate-float-reverse">
+              <i class="fa-solid fa-brain"></i> AI &amp; ML
+            </div>
+            <div class="floating-badge badge-bottom-left animate-float">
+              <i class="fa-solid fa-shield-halved"></i> Cyber Sec
+            </div>
+            <div class="floating-badge badge-bottom-right animate-float-reverse">
+              <i class="fa-solid fa-network-wired"></i> Networks
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#about" class="hero-scroll-indicator" aria-label="Scroll to About Section">
+        <div class="mouse-icon">
+          <div class="mouse-wheel"></div>
+        </div>
+        <span>SCROLL DOWN</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       About Me Section
+       ========================================================================== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <span class="section-badge"><i class="fa-solid fa-user-astronaut"></i> Discover My Background</span>
+        <h2 class="section-title">Bridging Full-Stack Code, <span class="text-gradient">AI &amp; Cyber Defense</span></h2>
+        <p class="section-desc">
+          Crafting high-throughput applications with hardened security standards and autonomous machine learning workflows.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <!-- About Narrative Left -->
+        <div class="about-text reveal-init">
+          <p>
+            I am a multifaceted software engineer with a strong foundation in <strong>modern full-stack engineering</strong>, 
+            <strong>computer networking</strong>, and <strong>defensive cybersecurity</strong>. I take pride in engineering systems 
+            that are not only visually captivating and blazingly fast, but also architecturally secure by design.
+          </p>
+          <p>
+            Whether implementing high-concurrency enterprise microservices in <strong>Java</strong>, training transformer models 
+            in <strong>Python</strong>, building reactive client-side experiences with <strong>HTML5, CSS3, and modern JavaScript</strong>, 
+            or dissecting raw packets with Wireshark, I thrive at the intersection of performance and security.
+          </p>
+          
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-bolt"></i></div>
+              <span>Ultra-low Latency Architecture</span>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-lock"></i></div>
+              <span>OWASP Hardened Systems</span>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-diagram-project"></i></div>
+              <span>Distributed Microservices</span>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-microchip"></i></div>
+              <span>Intelligent AI Integrations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Counter Cards Right -->
+        <div class="stats-grid reveal-init reveal-delay-1">
+          <div class="stat-card">
+            <span class="stat-number" data-target="5" data-suffix="+">0</span>
+            <div class="stat-label">Years of Development</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="25" data-suffix="+">0</span>
+            <div class="stat-label">Projects Shipped</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="8" data-suffix="+">0</span>
+            <div class="stat-label">Core Tech Disciplines</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="99.9" data-suffix="%" data-decimals="1">0</span>
+            <div class="stat-label">Production Reliability</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Core Pillars -->
+      <div class="pillars-grid reveal-init">
+        <div class="pillar-card">
+          <div class="pillar-icon-box pillar-icon-cyan">
+            <i class="fa-solid fa-cubes"></i>
+          </div>
+          <h3 class="pillar-title">Clean Architecture</h3>
+          <p class="pillar-desc">
+            Modularity, DRY principles, scalable design patterns, and rigorous automated test coverage for long-term codebase health.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box pillar-icon-purple">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="pillar-title">Security by Design</h3>
+          <p class="pillar-desc">
+            Hardened API endpoints, zero-trust network protocols, cryptographic data protection, and continuous vulnerability scanning.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box pillar-icon-emerald">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h3 class="pillar-title">AI &amp; Data Pipeline</h3>
+          <p class="pillar-desc">
+            Building intelligent retrieval systems (RAG), fine-tuning neural weights, and integrating vector embeddings into web apps.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box pillar-icon-amber">
+            <i class="fa-solid fa-gauge-high"></i>
+          </div>
+          <h3 class="pillar-title">Systems &amp; Network</h3>
+          <p class="pillar-desc">
+            Deep comprehension of the TCP/IP stack, socket programming, high-volume packet routing, and Linux server orchestration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Education Timeline Section
+       ========================================================================== -->
+  <section class="education" id="education">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <span class="section-badge"><i class="fa-solid fa-graduation-cap"></i> Academic Pathway</span>
+        <h2 class="section-title">My Education <span class="text-gradient">Timeline</span></h2>
+        <p class="section-desc">
+          Rigorous academic training in computer science, software engineering, enterprise networking, and cybersecurity.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <!-- Milestone 1 -->
+        <div class="timeline-item reveal-init">
+          <div class="timeline-node">
+            <div class="timeline-node-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 2020 – 2024</span>
+              <span class="timeline-badge"><i class="fa-solid fa-award"></i> First Class Honours (GPA: 3.9/4.0)</span>
+            </div>
+            <h3 class="timeline-title">Bachelor of Science in Computer Science &amp; Software Engineering</h3>
+            <div class="timeline-institution">
+              <i class="fa-solid fa-building-columns"></i> University School of Engineering &amp; Technology
+            </div>
+            <p class="timeline-desc">
+              Specialized in Cybersecurity Architectures and Machine Learning. Authored an undergraduate capstone thesis on autonomous 
+              neural packet anomaly detection. Recognized on the Dean’s Honour Roll for consecutive semesters.
+            </p>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Data Structures &amp; Algorithms</span>
+              <span class="timeline-tag">Applied Cryptography</span>
+              <span class="timeline-tag">Distributed Systems</span>
+              <span class="timeline-tag">Deep Learning</span>
+              <span class="timeline-tag">Software Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="timeline-item reveal-init">
+          <div class="timeline-node">
+            <div class="timeline-node-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 2018 – 2020</span>
+              <span class="timeline-badge"><i class="fa-solid fa-award"></i> Distinguished Graduate</span>
+            </div>
+            <h3 class="timeline-title">Advanced Diploma in Network Systems &amp; Infrastructure</h3>
+            <div class="timeline-institution">
+              <i class="fa-solid fa-building-columns"></i> Institute of Technology &amp; Network Sciences
+            </div>
+            <p class="timeline-desc">
+              Hands-on enterprise networking laboratory training focusing on Cisco routing &amp; switching, VLAN segmentation, 
+              firewall configurations, Wireshark packet decoding, and Unix/Linux system administration.
+            </p>
+            <div class="timeline-tags">
+              <span class="timeline-tag">TCP/IP Protocol Suite</span>
+              <span class="timeline-tag">Cisco IOS Routing</span>
+              <span class="timeline-tag">Network Security</span>
+              <span class="timeline-tag">Linux Administration</span>
+              <span class="timeline-tag">Subnetting &amp; CIDR</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="timeline-item reveal-init">
+          <div class="timeline-node">
+            <div class="timeline-node-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 2016 – 2018</span>
+              <span class="timeline-badge"><i class="fa-solid fa-award"></i> Excellence in STEM</span>
+            </div>
+            <h3 class="timeline-title">High School Diploma — Pre-Engineering &amp; Sciences</h3>
+            <div class="timeline-institution">
+              <i class="fa-solid fa-school"></i> National College of Sciences
+            </div>
+            <p class="timeline-desc">
+              Advanced coursework in Higher Mathematics (Calculus, Linear Algebra), Physics, and Introductory Computer Programming 
+              (Algorithms, Flowcharts, and Object-Oriented principles).
+            </p>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Advanced Calculus</span>
+              <span class="timeline-tag">Discrete Mathematics</span>
+              <span class="timeline-tag">Physics</span>
+              <span class="timeline-tag">Logic &amp; Computation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Technical Skills Section (Java, HTML, CSS, JavaScript, Python, Networking, AI, Cybersecurity)
+       ========================================================================== -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <span class="section-badge"><i class="fa-solid fa-microchip"></i> Technical Proficiency</span>
+        <h2 class="section-title">Core Skills &amp; <span class="text-gradient">Technologies</span></h2>
+        <p class="section-desc">
+          A balanced tech stack spanning core languages, web technologies, network protocols, artificial intelligence, and cybersecurity.
+        </p>
+      </div>
+
+      <!-- Skills Category Filter Buttons -->
+      <div class="skills-filter reveal-init">
+        <button class="filter-btn skills-filter-btn active" data-filter="all">All Skills</button>
+        <button class="filter-btn skills-filter-btn" data-filter="lang">Languages</button>
+        <button class="filter-btn skills-filter-btn" data-filter="web">Web &amp; Frontend</button>
+        <button class="filter-btn skills-filter-btn" data-filter="systems">Systems &amp; Network</button>
+        <button class="filter-btn skills-filter-btn" data-filter="ai-cyber">AI &amp; Cybersecurity</button>
+      </div>
+
+      <!-- Skills Grid (All 8 skills explicitly specified) -->
+      <div class="skills-grid reveal-init">
+
+        <!-- 1. Java -->
+        <div class="skill-card" data-category="lang systems">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #f97316;">
+              <i class="fa-brands fa-java"></i>
+            </div>
+            <span class="skill-category-badge">Core / Backend</span>
+          </div>
+          <h3 class="skill-name">Java</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">92%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="92"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">Spring Boot 3</span>
+            <span class="skill-topic-chip">OOP Design</span>
+            <span class="skill-topic-chip">Multithreading</span>
+            <span class="skill-topic-chip">JPA/Hibernate</span>
+            <span class="skill-topic-chip">JVM Tuning</span>
+          </div>
+        </div>
+
+        <!-- 2. HTML (HTML5) -->
+        <div class="skill-card" data-category="web">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #ef4444;">
+              <i class="fa-brands fa-html5"></i>
+            </div>
+            <span class="skill-category-badge">Web / Markup</span>
+          </div>
+          <h3 class="skill-name">HTML / HTML5</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">96%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="96"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">Semantic HTML5</span>
+            <span class="skill-topic-chip">WCAG 2.1 A11y</span>
+            <span class="skill-topic-chip">SEO Structure</span>
+            <span class="skill-topic-chip">Web Components</span>
+            <span class="skill-topic-chip">Canvas API</span>
+          </div>
+        </div>
+
+        <!-- 3. CSS (CSS3) -->
+        <div class="skill-card" data-category="web">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #38bdf8;">
+              <i class="fa-brands fa-css3-alt"></i>
+            </div>
+            <span class="skill-category-badge">Web / Styling</span>
+          </div>
+          <h3 class="skill-name">CSS / CSS3</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">94%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="94"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">CSS Grid &amp; Flex</span>
+            <span class="skill-topic-chip">Custom Properties</span>
+            <span class="skill-topic-chip">Glassmorphism</span>
+            <span class="skill-topic-chip">Fluid Clamp()</span>
+            <span class="skill-topic-chip">Animations</span>
+          </div>
+        </div>
+
+        <!-- 4. JavaScript -->
+        <div class="skill-card" data-category="lang web">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #facc15;">
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <span class="skill-category-badge">Web &amp; Logic</span>
+          </div>
+          <h3 class="skill-name">JavaScript (ES6+)</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">95%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="95"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">ES6+ Modules</span>
+            <span class="skill-topic-chip">Async / Await</span>
+            <span class="skill-topic-chip">DOM &amp; Events</span>
+            <span class="skill-topic-chip">Fetch / REST APIs</span>
+            <span class="skill-topic-chip">WebSockets</span>
+          </div>
+        </div>
+
+        <!-- 5. Python -->
+        <div class="skill-card" data-category="lang systems ai-cyber">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #60a5fa;">
+              <i class="fa-brands fa-python"></i>
+            </div>
+            <span class="skill-category-badge">Data &amp; Automation</span>
+          </div>
+          <h3 class="skill-name">Python</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">93%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="93"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">FastAPI / Flask</span>
+            <span class="skill-topic-chip">Scripting</span>
+            <span class="skill-topic-chip">NumPy / Pandas</span>
+            <span class="skill-topic-chip">AsyncIO</span>
+            <span class="skill-topic-chip">PyTest</span>
+          </div>
+        </div>
+
+        <!-- 6. Networking -->
+        <div class="skill-card" data-category="systems">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #34d399;">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <span class="skill-category-badge">Infrastructure</span>
+          </div>
+          <h3 class="skill-name">Networking</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="90"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">TCP/IP &amp; OSI</span>
+            <span class="skill-topic-chip">Raw Sockets</span>
+            <span class="skill-topic-chip">Routing &amp; Switching</span>
+            <span class="skill-topic-chip">Wireshark Sniffing</span>
+            <span class="skill-topic-chip">DNS / DHCP / VPN</span>
+          </div>
+        </div>
+
+        <!-- 7. Artificial Intelligence (AI) -->
+        <div class="skill-card" data-category="ai-cyber">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #c084fc;">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <span class="skill-category-badge">Machine Learning</span>
+          </div>
+          <h3 class="skill-name">Artificial Intelligence (AI)</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">88%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="88"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">PyTorch Models</span>
+            <span class="skill-topic-chip">Neural Networks</span>
+            <span class="skill-topic-chip">RAG &amp; Vector DBs</span>
+            <span class="skill-topic-chip">LLM Orchestration</span>
+            <span class="skill-topic-chip">NLP Pipelines</span>
+          </div>
+        </div>
+
+        <!-- 8. Cybersecurity -->
+        <div class="skill-card" data-category="systems ai-cyber">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap" style="color: #f43f5e;">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <span class="skill-category-badge">Threat Defense</span>
+          </div>
+          <h3 class="skill-name">Cybersecurity</h3>
+          <div class="skill-proficiency-text">
+            <span>Proficiency &amp; Mastery</span>
+            <span class="skill-percent">91%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" data-percent="91"></div>
+          </div>
+          <div class="skill-topics">
+            <span class="skill-topic-chip">OWASP Top 10</span>
+            <span class="skill-topic-chip">Penetration Testing</span>
+            <span class="skill-topic-chip">TLS / Cryptography</span>
+            <span class="skill-topic-chip">Vulnerability Audit</span>
+            <span class="skill-topic-chip">Network Hardening</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Projects Showcase Section
+       ========================================================================== -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <span class="section-badge"><i class="fa-solid fa-diagram-project"></i> Portfolio Showcase</span>
+        <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+        <p class="section-desc">
+          Real-world applications delivering full-stack architectures, real-time packet sniffers, and automated cyber defense.
+        </p>
+      </div>
+
+      <!-- Project Category Filter Buttons -->
+      <div class="skills-filter reveal-init">
+        <button class="filter-btn project-filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn project-filter-btn" data-filter="fullstack">Full-Stack</button>
+        <button class="filter-btn project-filter-btn" data-filter="ai-cyber">AI &amp; Cybersecurity</button>
+        <button class="filter-btn project-filter-btn" data-filter="networking">Networking</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid reveal-init">
+
+        <!-- Project 1: NeuroShield AI -->
+        <article class="project-card" data-category="ai-cyber">
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-neuroshield.svg" alt="NeuroShield AI Threat Detection" class="project-img" loading="lazy">
+            <span class="project-badge-overlay">AI &amp; Cybersecurity</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">
+              <span>NeuroShield AI</span>
+              <i class="fa-solid fa-shield-virus" style="color: var(--accent-emerald); font-size: 1.1rem;"></i>
+            </h3>
+            <p class="project-desc">
+              Autonomous deep learning network threat detection system providing sub-3ms packet classification and automated DDoS attack mitigation.
+            </p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">Networking</span>
+              <span class="tech-tag">Cybersecurity</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links">
+                <a href="https://github.com/esubap/neuroshield-ai" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <button type="button" class="project-link-btn" onclick="openProjectModal('neuroshield')" style="background:none; border:none; cursor:pointer;" title="Inspect System Architecture">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openProjectModal('neuroshield')">
+                Inspect <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: NexusFlow LMS -->
+        <article class="project-card" data-category="fullstack">
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-nexusflow.svg" alt="NexusFlow School Management LMS" class="project-img" loading="lazy">
+            <span class="project-badge-overlay">Java &amp; Full-Stack</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">
+              <span>NexusFlow LMS</span>
+              <i class="fa-solid fa-graduation-cap" style="color: var(--accent-sky); font-size: 1.1rem;"></i>
+            </h3>
+            <p class="project-desc">
+              Enterprise school and university management platform built with Java Spring Boot, microservices, and a responsive web dashboard.
+            </p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">HTML5/CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links">
+                <a href="https://github.com/esubap/nexusflow-school-lms" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <button type="button" class="project-link-btn" onclick="openProjectModal('nexusflow')" style="background:none; border:none; cursor:pointer;">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openProjectModal('nexusflow')">
+                Inspect <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: CyberSentinel Auditor -->
+        <article class="project-card" data-category="ai-cyber">
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-cybersentinel.svg" alt="CyberSentinel Vulnerability Scanner" class="project-img" loading="lazy">
+            <span class="project-badge-overlay">Security &amp; Python</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">
+              <span>CyberSentinel Auditor</span>
+              <i class="fa-solid fa-bug-slash" style="color: var(--accent-rose); font-size: 1.1rem;"></i>
+            </h3>
+            <p class="project-desc">
+              Automated multi-threaded web vulnerability scanner detecting OWASP Top 10 exploits, missing headers, and insecure TLS handshakes.
+            </p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Cybersecurity</span>
+              <span class="tech-tag">OWASP</span>
+              <span class="tech-tag">REST API</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links">
+                <a href="https://github.com/esubap/cybersentinel-audit" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <button type="button" class="project-link-btn" onclick="openProjectModal('cybersentinel')" style="background:none; border:none; cursor:pointer;">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openProjectModal('cybersentinel')">
+                Inspect <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: AetherUI Platform -->
+        <article class="project-card" data-category="fullstack">
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-aetherui.svg" alt="AetherUI Reactive Component Engine" class="project-img" loading="lazy">
+            <span class="project-badge-overlay">Web / Zero-Framework</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">
+              <span>AetherUI Platform</span>
+              <i class="fa-solid fa-bolt" style="color: var(--accent-cyan); font-size: 1.1rem;"></i>
+            </h3>
+            <p class="project-desc">
+              Ultra-lightweight reactive UI platform engineered purely with native Web Components, fluid CSS variables, and zero runtime bloat.
+            </p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Web Components</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links">
+                <a href="https://github.com/esubap/aether-web-ui" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <button type="button" class="project-link-btn" onclick="openProjectModal('aetherui')" style="background:none; border:none; cursor:pointer;">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openProjectModal('aetherui')">
+                Inspect <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5: SynapseAI Assistant -->
+        <article class="project-card" data-category="ai-cyber">
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-synapse.svg" alt="SynapseAI Semantic Assistant" class="project-img" loading="lazy">
+            <span class="project-badge-overlay">AI &amp; Neural RAG</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">
+              <span>SynapseAI Assistant</span>
+              <i class="fa-solid fa-brain" style="color: var(--accent-purple); font-size: 1.1rem;"></i>
+            </h3>
+            <p class="project-desc">
+              Context-aware neural knowledge assistant that connects enterprise technical documentation with large language models via dense vector search.
+            </p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">AI / PyTorch</span>
+              <span class="tech-tag">Vector DB</span>
+              <span class="tech-tag">WebSockets</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links">
+                <a href="https://github.com/esubap/synapse-ai-rag" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <button type="button" class="project-link-btn" onclick="openProjectModal('synapse')" style="background:none; border:none; cursor:pointer;">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openProjectModal('synapse')">
+                Inspect <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6: PacketPulse Sniffer -->
+        <article class="project-card" data-category="networking">
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-packetpulse.svg" alt="PacketPulse Network Sniffer" class="project-img" loading="lazy">
+            <span class="project-badge-overlay">Networking &amp; Java</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">
+              <span>PacketPulse Sniffer</span>
+              <i class="fa-solid fa-network-wired" style="color: var(--accent-cyan); font-size: 1.1rem;"></i>
+            </h3>
+            <p class="project-desc">
+              High-throughput packet analyzer written in Java using raw sockets to monitor live Ethernet bandwidth, decode TCP/UDP, and export PCAP traces.
+            </p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Networking</span>
+              <span class="tech-tag">TCP/IP Sockets</span>
+              <span class="tech-tag">Wireshark Format</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links">
+                <a href="https://github.com/esubap/packetpulse-sniffer" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <button type="button" class="project-link-btn" onclick="openProjectModal('packetpulse')" style="background:none; border:none; cursor:pointer;">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openProjectModal('packetpulse')">
+                Inspect <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Certificates Section
+       ========================================================================== -->
+  <section class="certificates" id="certificates">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <span class="section-badge"><i class="fa-solid fa-award"></i> Verified Accreditations</span>
+        <h2 class="section-title">Professional <span class="text-gradient">Certifications</span></h2>
+        <p class="section-desc">
+          Industry-recognized credentials certifying technical standards in cybersecurity, network architecture, Java, AI, and web development.
+        </p>
+      </div>
+
+      <div class="certificates-grid reveal-init">
+
+        <!-- Cert 1: CompTIA Security+ -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-badge-wrap">
+              <img src="assets/images/cert-security.svg" alt="Security+ Badge" class="cert-badge-img">
+            </div>
+            <div class="cert-title-box">
+              <span class="cert-issuer">CompTIA Certification</span>
+              <h3 class="cert-name">CompTIA Security+ (SY0-701)</h3>
+            </div>
+          </div>
+          <div class="cert-meta-info">
+            <span>Issued: Nov 2024</span>
+            <span class="cert-id">ID: COMP001029384</span>
+          </div>
+          <p class="cert-desc">
+            Validates core technical skills in enterprise security management, vulnerability triage, cryptography, and network defense architecture.
+          </p>
+          <div class="cert-actions">
+            <button class="cert-view-btn" onclick="openCertModal('cert-sec')">
+              <i class="fa-solid fa-certificate"></i> View Credential
+            </button>
+            <span style="font-size: 0.8rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert 2: Cisco CCNA -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-badge-wrap">
+              <img src="assets/images/cert-ccna.svg" alt="CCNA Badge" class="cert-badge-img">
+            </div>
+            <div class="cert-title-box">
+              <span class="cert-issuer">Cisco Systems</span>
+              <h3 class="cert-name">Cisco Certified Network Associate (CCNA)</h3>
+            </div>
+          </div>
+          <div class="cert-meta-info">
+            <span>Issued: Aug 2024</span>
+            <span class="cert-id">ID: CSCO14892011</span>
+          </div>
+          <p class="cert-desc">
+            Demonstrates deep mastery over IP connectivity, subnetting, OSPF routing, VLANs, network access security, and automation fundamentals.
+          </p>
+          <div class="cert-actions">
+            <button class="cert-view-btn" onclick="openCertModal('cert-ccna')">
+              <i class="fa-solid fa-certificate"></i> View Credential
+            </button>
+            <span style="font-size: 0.8rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert 3: Oracle Java SE 17 -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-badge-wrap">
+              <img src="assets/images/cert-java.svg" alt="Java OCP Badge" class="cert-badge-img">
+            </div>
+            <div class="cert-title-box">
+              <span class="cert-issuer">Oracle Corporation</span>
+              <h3 class="cert-name">Oracle Certified Professional: Java SE 17</h3>
+            </div>
+          </div>
+          <div class="cert-meta-info">
+            <span>Issued: May 2024</span>
+            <span class="cert-id">ID: OCP-JAVA-88120</span>
+          </div>
+          <p class="cert-desc">
+            Validates deep enterprise mastery of Java language syntax, JVM memory optimization, concurrency, Streams API, and object-oriented design.
+          </p>
+          <div class="cert-actions">
+            <button class="cert-view-btn" onclick="openCertModal('cert-java')">
+              <i class="fa-solid fa-certificate"></i> View Credential
+            </button>
+            <span style="font-size: 0.8rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert 4: Deep Learning AI -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-badge-wrap">
+              <img src="assets/images/cert-ai.svg" alt="AI Deep Learning Badge" class="cert-badge-img">
+            </div>
+            <div class="cert-title-box">
+              <span class="cert-issuer">DeepLearning.AI / Stanford</span>
+              <h3 class="cert-name">Machine Learning Specialization</h3>
+            </div>
+          </div>
+          <div class="cert-meta-info">
+            <span>Issued: Feb 2024</span>
+            <span class="cert-id">ID: DL-STANFORD-491</span>
+          </div>
+          <p class="cert-desc">
+            Covers neural network backpropagation, convolutional models for computer vision, transformer models, and LLM fine-tuning techniques.
+          </p>
+          <div class="cert-actions">
+            <button class="cert-view-btn" onclick="openCertModal('cert-ai')">
+              <i class="fa-solid fa-certificate"></i> View Credential
+            </button>
+            <span style="font-size: 0.8rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert 5: Meta Full-Stack Web -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-badge-wrap">
+              <img src="assets/images/cert-web.svg" alt="Meta Web Developer Badge" class="cert-badge-img">
+            </div>
+            <div class="cert-title-box">
+              <span class="cert-issuer">Meta / Coursera</span>
+              <h3 class="cert-name">Meta Certified Full-Stack Developer</h3>
+            </div>
+          </div>
+          <div class="cert-meta-info">
+            <span>Issued: Oct 2023</span>
+            <span class="cert-id">ID: META-DEV-90214</span>
+          </div>
+          <p class="cert-desc">
+            Demonstrates comprehensive full-stack expertise: semantic HTML5, modern CSS3 layout systems, ES6+ JavaScript, databases, and responsive UX.
+          </p>
+          <div class="cert-actions">
+            <button class="cert-view-btn" onclick="openCertModal('cert-web')">
+              <i class="fa-solid fa-certificate"></i> View Credential
+            </button>
+            <span style="font-size: 0.8rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert 6: Python Certified -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-badge-wrap">
+              <img src="assets/images/cert-python.svg" alt="Python PCAP Badge" class="cert-badge-img">
+            </div>
+            <div class="cert-title-box">
+              <span class="cert-issuer">Python Institute</span>
+              <h3 class="cert-name">Certified Associate in Python (PCAP)</h3>
+            </div>
+          </div>
+          <div class="cert-meta-info">
+            <span>Issued: Jul 2023</span>
+            <span class="cert-id">ID: PCAP-31-03-882</span>
+          </div>
+          <p class="cert-desc">
+            Validates proficiency in object-oriented Python, system file handling, network sockets, asynchronous I/O, and automation scripting.
+          </p>
+          <div class="cert-actions">
+            <button class="cert-view-btn" onclick="openCertModal('cert-py')">
+              <i class="fa-solid fa-certificate"></i> View Credential
+            </button>
+            <span style="font-size: 0.8rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Verified</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Contact Section with Working Form
+       ========================================================================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <span class="section-badge"><i class="fa-solid fa-envelope-open-text"></i> Initiate Contact</span>
+        <h2 class="section-title">Let’s Build Something <span class="text-gradient">Extraordinary</span></h2>
+        <p class="section-desc">
+          Have an engineering project, security inquiry, or technical collaboration in mind? Send me a message and let's connect.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Panel Left -->
+        <div class="contact-info-panel reveal-init">
+          <div class="contact-card-box">
+            <h3>Direct Communication</h3>
+            <p>
+              I am open to full-stack software development contracts, cybersecurity assessments, and AI implementation consultations.
+            </p>
+
+            <div class="contact-methods">
+              <!-- Email with One-Click Copy -->
+              <div class="contact-method-item">
+                <div class="contact-icon-wrapper">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">Email Address</div>
+                  <div class="contact-val" id="my-email-address">sesuba21@gmail.com</div>
+                </div>
+                <button type="button" class="copy-btn" id="copy-email-btn" title="Copy to clipboard">
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+              </div>
+
+              <!-- Phone & WhatsApp -->
+              <div class="contact-method-item">
+                <div class="contact-icon-wrapper" style="color: #22c55e;">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">Phone &amp; WhatsApp</div>
+                  <div class="contact-val">
+                    <a href="tel:+251903974728" style="color: inherit; text-decoration: underline;">+251 903 974 728</a>
+                  </div>
+                </div>
+                <a href="https://wa.me/251903974728" target="_blank" rel="noopener noreferrer" class="copy-btn" title="Chat on WhatsApp" style="color: #22c55e; border-color: rgba(34, 197, 94, 0.3);">
+                  <i class="fa-brands fa-whatsapp"></i> Chat
+                </a>
+              </div>
+
+              <!-- GitHub & Dev Profiles -->
+              <div class="contact-method-item">
+                <div class="contact-icon-wrapper">
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">GitHub Profile (@esubap)</div>
+                  <div class="contact-val">
+                    <a href="https://github.com/esubap" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">github.com/esubap</a>
+                    <span style="font-size: 0.78rem; color: var(--text-muted); display: block;">Git: sesuba03@gmail.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Media Username -->
+              <div class="contact-method-item">
+                <div class="contact-icon-wrapper" style="color: var(--accent-purple);">
+                  <i class="fa-solid fa-hashtag"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">Social Media Handle</div>
+                  <div class="contact-val">
+                    <span style="color: var(--accent-purple); font-family: var(--font-mono);">@esubap</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted); display: block;">Telegram / LinkedIn / X / Instagram</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="contact-method-item">
+                <div class="contact-icon-wrapper">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">Location</div>
+                  <div class="contact-val">Addis Ababa, Ethiopia (Open to Remote Worldwide)</div>
+                </div>
+              </div>
+
+              <!-- Response Time -->
+              <div class="contact-method-item">
+                <div class="contact-icon-wrapper">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">Average Response Time</div>
+                  <div class="contact-val">&lt; 24 Hours Guaranteed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working Contact Form Right -->
+        <div class="contact-form-panel reveal-init reveal-delay-1">
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-name" class="form-label">
+                  <span>Full Name</span>
+                  <span style="color: var(--accent-rose);">*</span>
+                </label>
+                <input type="text" id="form-name" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+                <span class="form-feedback"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-email" class="form-label">
+                  <span>Email Address</span>
+                  <span style="color: var(--accent-rose);">*</span>
+                </label>
+                <input type="email" id="form-email" class="form-input" placeholder="e.g. sarah@company.com" required>
+                <span class="form-feedback"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-subject" class="form-label">
+                  <span>Subject</span>
+                  <span style="color: var(--accent-rose);">*</span>
+                </label>
+                <input type="text" id="form-subject" class="form-input" placeholder="e.g. Enterprise Full-Stack Project" required>
+                <span class="form-feedback"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-category" class="form-label">
+                  <span>Inquiry Type</span>
+                </label>
+                <select id="form-category" class="form-select">
+                  <option value="software">Full-Stack Web Development</option>
+                  <option value="cyber">Cybersecurity &amp; Vulnerability Audit</option>
+                  <option value="ai">AI / Machine Learning Engineering</option>
+                  <option value="network">Network Systems &amp; Infrastructure</option>
+                  <option value="other">Other Collaboration / Contract</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message" class="form-label">
+                <span>Your Message</span>
+                <span style="color: var(--accent-rose);">*</span>
+              </label>
+              <textarea id="form-message" class="form-textarea" placeholder="Describe your project, timeline, and architectural requirements..." required></textarea>
+              <span class="form-feedback"></span>
+            </div>
+
+            <button type="submit" id="form-submit-btn" class="btn btn-primary" style="width: 100%;">
+              <i class="fa-solid fa-paper-plane"></i> Send Secure Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <span class="logo-badge"><i class="fa-solid fa-terminal"></i></span>
+            <span>Esubalew<span class="logo-tag">.dev</span></span>
+          </a>
+          <p class="footer-desc">
+            Full-Stack Software Engineer &amp; Cyber Defender. Architecting robust web applications, 
+            intelligent neural systems, and fortified networks.
+          </p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#hero" class="footer-link">Home</a></li>
+          <li><a href="#about" class="footer-link">About</a></li>
+          <li><a href="#education" class="footer-link">Education</a></li>
+          <li><a href="#skills" class="footer-link">Skills</a></li>
+          <li><a href="#projects" class="footer-link">Projects</a></li>
+          <li><a href="#certificates" class="footer-link">Certificates</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="current-year">2026</span> Esubalew Shenkute. Engineered with 
+          <i class="fa-solid fa-heart footer-heart"></i> using HTML5, CSS3, &amp; Vanilla JavaScript.
+        </div>
+        <div>
+          <span>Design System: Dark Obsidian &amp; Neon Glow</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Interactive Modals & Toast Container
+       ========================================================================== -->
+  <!-- Project / Certificate Details Modal -->
+  <div class="modal-overlay" id="details-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="modal-dynamic-content">
+        <!-- Dynamically populated by js/projects.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- Back to Top Floating Action Button with Circular SVG Progress -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top of page">
+    <svg viewBox="0 0 60 60">
+      <circle class="progress-circle" cx="30" cy="30" r="25"></circle>
+    </svg>
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- ==========================================================================
+       JavaScript Modules
+       ========================================================================== -->
+  <script src="js/particles.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
