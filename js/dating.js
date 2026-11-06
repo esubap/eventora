@@ -302,82 +302,159 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // --- STEP 1: INTERACTIVE NO BUTTON DODGING ---
+  // --- STEP 1: INTERACTIVE NO BUTTON DODGING (VIRAL TIKTOK STYLE) ---
   function setupTeleportingNoButton() {
     const btnNo = document.getElementById('btn-no');
     const btnYes = document.getElementById('btn-yes');
     if (!btnNo || !btnYes) return;
 
-    let isTeleporting = false;
+    let noPlaceholder = null;
+    let lastDodgeTime = 0;
+    const PROXIMITY_DISTANCE = 85; // Distance in pixels that triggers runaway glide
 
-    function dodgeNoButton(e) {
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
+    function calculateSafeRandomPosition(cursorX, cursorY) {
+      const padding = 24;
+      const btnWidth = btnNo.offsetWidth || 135;
+      const btnHeight = btnNo.offsetHeight || 48;
+
+      const minX = padding;
+      const maxX = Math.max(minX, window.innerWidth - btnWidth - padding);
+      const minY = padding;
+      const maxY = Math.max(minY, window.innerHeight - btnHeight - padding);
+
+      const yesRect = btnYes.getBoundingClientRect();
+      let bestX = minX;
+      let bestY = minY;
+      let attempts = 0;
+
+      while (attempts < 30) {
+        attempts++;
+        const randX = Math.floor(Math.random() * (maxX - minX)) + minX;
+        const randY = Math.floor(Math.random() * (maxY - minY)) + minY;
+
+        // Ensure no overlap with the fixed YES button
+        const overlapsYes = (
+          randX < yesRect.right + 25 &&
+          randX + btnWidth > yesRect.left - 25 &&
+          randY < yesRect.bottom + 25 &&
+          randY + btnHeight > yesRect.top - 25
+        );
+        if (overlapsYes) continue;
+
+        // Ensure it jumps away from the current cursor position
+        if (cursorX !== undefined && cursorY !== undefined) {
+          const distToCursor = Math.hypot(randX + btnWidth / 2 - cursorX, randY + btnHeight / 2 - cursorY);
+          if (distToCursor < 180) continue;
+        }
+
+        bestX = randX;
+        bestY = randY;
+        break;
+      }
+
+      if (attempts >= 30) {
+        // Fallback: move to opposite quadrant from cursor
+        bestX = cursorX && cursorX > window.innerWidth / 2 ? minX + 20 : maxX - 20;
+        bestY = cursorY && cursorY > window.innerHeight / 2 ? minY + 20 : maxY - 20;
+      }
+
+      return { x: bestX, y: bestY };
+    }
+
+    function dodgeNoButton(cursorX, cursorY, immediate = false) {
+      const now = performance.now();
+      if (!immediate && now - lastDodgeTime < 140) return;
+      lastDodgeTime = now;
+
+      // Keep YES button stable: insert placeholder so YES never shifts
+      if (!noPlaceholder) {
+        noPlaceholder = document.createElement('div');
+        noPlaceholder.id = 'no-btn-placeholder';
+        noPlaceholder.style.width = `${btnNo.offsetWidth}px`;
+        noPlaceholder.style.height = `${btnNo.offsetHeight}px`;
+        noPlaceholder.style.display = 'inline-flex';
+        noPlaceholder.style.visibility = 'hidden';
+        noPlaceholder.style.pointerEvents = 'none';
+        btnNo.parentNode.insertBefore(noPlaceholder, btnNo);
       }
 
       state.dodgeCount++;
       playSound('boing');
 
-      // Update text with hilarious sarcastic messages
+      // Update text with sarcastic phrases
       const phraseIndex = (state.dodgeCount - 1) % dodgePhrases.length;
       btnNo.textContent = dodgePhrases[phraseIndex];
 
-      // Grow YES button to make it unavoidable
-      const newScale = Math.min(1.0 + state.dodgeCount * 0.08, 1.48);
-      btnYes.style.transform = `scale(${newScale})`;
-      btnYes.style.boxShadow = `0 ${10 + state.dodgeCount * 3}px ${25 + state.dodgeCount * 4}px -4px rgba(244, 63, 94, 0.65)`;
+      // Calculate new random coordinates within visible screen bounds
+      const pos = calculateSafeRandomPosition(cursorX, cursorY);
 
-      // Calculate safe coordinates inside viewport
-      const padding = 24;
-      const btnRect = btnNo.getBoundingClientRect();
-      const btnWidth = btnRect.width || 140;
-      const btnHeight = btnRect.height || 48;
-
-      const maxX = window.innerWidth - btnWidth - padding;
-      const maxY = window.innerHeight - btnHeight - padding;
-
-      // Random position
-      let randomX = Math.floor(Math.random() * (maxX - padding)) + padding;
-      let randomY = Math.floor(Math.random() * (maxY - padding)) + padding;
-
-      // Ensure it doesn't accidentally cover the YES button
-      const yesRect = btnYes.getBoundingClientRect();
-      if (
-        randomX > yesRect.left - 50 &&
-        randomX < yesRect.right + 50 &&
-        randomY > yesRect.top - 40 &&
-        randomY < yesRect.bottom + 40
-      ) {
-        randomY = randomY > window.innerHeight / 2 ? padding + 20 : maxY - 20;
-      }
-
+      // Smoothly glide to new coordinates (uses transition: all 0.2s ease-in-out from CSS)
       btnNo.classList.add('teleporting');
-      btnNo.style.left = `${randomX}px`;
-      btnNo.style.top = `${randomY}px`;
+      btnNo.style.position = 'fixed';
+      btnNo.style.left = `${pos.x}px`;
+      btnNo.style.top = `${pos.y}px`;
 
-      // Log funny easter egg in DevTools
-      console.log(`[Dating Proposal Terminal] User tried to click NO. Attempt #${state.dodgeCount}. Dodge protocol executed.`);
+      console.log(`[TikTok Runaway Button] Dodge #${state.dodgeCount} -> Moved to (${pos.x}, ${pos.y})`);
     }
 
-    // Attach mouse, pointer, and touch events for lightning-fast evasion
-    btnNo.addEventListener('mouseenter', dodgeNoButton);
-    btnNo.addEventListener('pointerenter', dodgeNoButton);
-    btnNo.addEventListener('touchstart', dodgeNoButton, { passive: false });
-    btnNo.addEventListener('click', dodgeNoButton);
+    // Cursor proximity detection: runs away when cursor gets close
+    function onCursorMove(e) {
+      if (state.currentStep !== 1) return;
 
-    // YES button click handler
-    btnYes.addEventListener('click', (e) => {
-      e.preventDefault();
-      playSound('fanfare');
-      triggerConfetti(3500);
+      const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : null);
+      const clientY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : null);
+      if (clientX === null || clientY === null) return;
 
-      // Reset NO button
+      const rect = btnNo.getBoundingClientRect();
+      const btnCenterX = rect.left + rect.width / 2;
+      const btnCenterY = rect.top + rect.height / 2;
+      const dist = Math.hypot(clientX - btnCenterX, clientY - btnCenterY);
+
+      if (dist < PROXIMITY_DISTANCE + Math.max(rect.width, rect.height) / 2) {
+        dodgeNoButton(clientX, clientY, false);
+      }
+    }
+
+    // Direct event handlers for instant evasion
+    function onDirectInteract(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : undefined);
+      const clientY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : undefined);
+      dodgeNoButton(clientX, clientY, true);
+    }
+
+    btnNo.addEventListener('mouseenter', onDirectInteract);
+    btnNo.addEventListener('pointerenter', onDirectInteract);
+    btnNo.addEventListener('touchstart', onDirectInteract, { passive: false });
+    btnNo.addEventListener('click', onDirectInteract);
+
+    // Global cursor tracking while on step 1
+    document.addEventListener('mousemove', onCursorMove, { passive: true });
+    document.addEventListener('touchmove', onCursorMove, { passive: true });
+
+    // Function to reset NO button when resetting or proceeding
+    window.resetNoButtonPosition = function () {
       btnNo.classList.remove('teleporting');
       btnNo.style.position = '';
       btnNo.style.left = '';
       btnNo.style.top = '';
       btnNo.textContent = 'NO 🤍';
+      if (noPlaceholder && noPlaceholder.parentNode) {
+        noPlaceholder.parentNode.removeChild(noPlaceholder);
+        noPlaceholder = null;
+      }
+    };
+
+    // YES button click handler - fixed and stable
+    btnYes.addEventListener('click', (e) => {
+      e.preventDefault();
+      playSound('fanfare');
+      triggerConfetti(3500);
+
+      window.resetNoButtonPosition();
 
       setTimeout(() => {
         goToStep(2);
@@ -662,6 +739,9 @@
         }
         if (btnPay) {
           btnPay.innerHTML = `pay $499 & confirm ♡`;
+        }
+        if (window.resetNoButtonPosition) {
+          window.resetNoButtonPosition();
         }
         goToStep(1);
       });
