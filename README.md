@@ -1,100 +1,97 @@
-# 🌸 The IT Guy's Dating Proposal Web Application ♡
+# ⚡ Squad & Friendship Hub
 
-A cute, slightly funny, and sarcastic dating proposal website crafted with a soft aesthetic, modern glassmorphism, delightful animations, and IT guy humor.
-
-Built with **HTML5**, **Tailwind CSS**, modern **CSS3**, and vanilla **JavaScript (ES6+)**.
+A modern, responsive, ultra-slick web application for friend groups, gaming squads, and tight-knit crews built with **React**, **Vite**, and **Tailwind CSS**.
 
 ---
 
-## ✨ Features & Multi-Step Flow
+## 🌟 Features Included
 
-### 1. Step 1: The Question ("Will you go on a date with me?")
-- **Centered Glassmorphic Card Container**: Soft pink/beige gradient background, smooth drop shadows, and subtle floating blossoms & paw prints.
-- **Picture/Avatar**: Adorable vector pug avatar wearing nerdy wireframe glasses, bowtie, and blush cheeks.
-- **Heading**: `"🌸 Will you go on a date with me? 🌸"`
-- **Buttons**:
-  - `YES 🤍`: Glowing, pulsing rose button that expands as attempts are made.
-  - `NO 🤍`: **Interactive Runaway Feature**! Hovering over or tapping the "NO" button makes it instantly teleport to random screen coordinates, cycling through sarcastic developer excuses (`"404: Rejection Not Found"`, `"Permission Denied (sudo won't help)"`, `"Git commit rejected by hook"`, etc.), making it practically impossible to decline.
+1. **Hero Section**:
+   - Dynamic crew branding (`The Chaos Syndicate`), active streak counter (`584 Days Active 🔥`), live voice chat status pill, and animated rotating catchphrases.
+   - High-impact bold group banner with stacked member avatars, real-time presence indicators (online/idle/dnd), and key stats (pizza eaten, lag excuses, 3 AM voice calls).
 
-### 2. Step 2: Celebration Page
-- **Trigger**: Activated immediately upon clicking `YES 🤍`.
-- **Effects**: Full-screen colorful confetti burst & celebration chime fanfare.
-- **Visual**: Ecstatic pug wearing a party hat with tears of pure joy 🥹.
-- **Heading**: `"WAIT YOU ACTUALLY SAID YES?! 🥹"`
-- **Subtext**: `"I was so ready for you to say no 😭"`
-- **Sarcastic IT Note**: Canceling 8 hours of video games and rehearsing normal human conversation.
-- **Button**: `"okay okay! →"` smoothly transitions to Step 3.
+2. **Squad Roster**:
+   - Character/RPG trading card-style member profiles.
+   - Includes real photo avatars, role badges (e.g. *The Tactician*, *The Chaos Gremlin*, *The Silent Carry*), nicknames, iconic quotes, special perks, and funny stat meters (Clutch Potential, Coffee Dependency, Punctuality, Voice Volume).
+   - Click any card to open a full **Dossier Modal** with lore, loadouts, and an interactive **Hype Member** button with confetti effects!
 
-### 3. Step 3: Date Scheduling ("So... when are you free?")
-- **Header**: Calendar icon with paw prints: `"🗓️ So... when are you free? 🐾"`.
-- **Date Picker**: Custom-styled input (`Pick a Day (mm/dd/yyyy)`) with minimum date restricted to today, plus quick-selection chips (`This Friday 🌙`, `This Saturday ✨`, `Tomorrow! ⚡`, `Next Weekend 🌷`).
-- **Time Picker**: Dropdown with options (`6:00 PM (Prime Dinner Time 🚗)`, `6:30 PM`, `7:00 PM (Candlelight Atmosphere 🕯️)`, etc.).
-- **Button**: `"set the date! ♡"`
+3. **The Quote Wall**:
+   - Searchable and filterable archive of legendary squad moments.
+   - Filter by category (*Gaming Rage*, *3 AM Epiphanies*, *Food Debates*, *Famous Last Words*, *Out of Context*, *Pure Wisdom*) and by squad member.
+   - Interactive reactions (🔥, 😂, 💀, 🧢) with live counters.
+   - One-click copy quote button with instant feedback.
+   - **+ Add Iconic Quote** modal to record new moments in real-time.
 
-### 4. Step 4: Food Selection ("What are we feeling?")
-- **Heading**: `"What are we feeling? ✨"` with subtext `"pick your vibe"`.
-- **Food Grid**: Interactive, bounce-animated food cards with sarcastic IT commentary:
-  - 🍕 **Pizza 🍕** (*"Classic. 0% chance of failure"*)
-  - 🍣 **Sushi 🍣** (*"High luxury bandwidth"*)
-  - 🍔 **Burgers 🍔** (*"Messy, honest comfort food"*)
-  - 🍝 **Pasta 🍝** (*"Lady & The Tramp simulation"*)
-  - 🌮 **Tacos 🌮** (*"Guac is 100% sponsored"*)
-  - 🍜 **Ramen 🍜** (*"Warm soup, glasses fogged"*)
-- **Interactive State**: Highlights with checkmark badge, soft glow, and click sound.
-- **Button**: Dynamic button (e.g. `"lock in Pizza! 🍕 ♡"`).
+4. **The Decision Wheel**:
+   - Interactive HTML5 canvas spinning wheel with realistic physics and deceleration.
+   - Pre-loaded dispute presets:
+     - *Where Are We Eating? 🌮*
+     - *What Game To Play? 🎮*
+     - *Who Takes The Blame / Pays? 💳*
+     - *Weekend Quest 🍿*
+   - Add custom slices on the fly, remove slices, spin with sound effects, and celebrate with a confetti explosion upon picking a winner!
+   - Saves recent decision history.
 
-### 5. Step 5: The Confirmation Letter
-- **Heading**: `"glad you didn't say no. be ready by 6, I'm coming to get you 🚗"`
-- **Card Design**: Vintage love memo complete with washi tape, live date/time/food pills, and IT boyfriend guarantees (e.g., zero Linux talk for the first 45 minutes, root Bluetooth aux cord privileges, free lifetime Wi-Fi troubleshooting).
-- **Handwritten P.S. Note**:
-  > *"P.S. normal people text. I made a website on Replit, during lunch, for you. no big deal. ♡♡♡♡♡"*
-- **Button**: `"ok I accept 🥂"`
-
-### 6. Step 6: The Joke Paywall & Final Screen
-- **Heading**: `"one small fee"`
-- **Subtext**: `"to confirm your acceptance of this date, please complete the following transaction. totally normal, everyone does this."`
-- **Fake Transaction Box**:
-  - Item: `Date Agreement™`
-  - Price: `$499`
-  - Description: `one-time fee · non-refundable · absolutely worth it`
-  - Itemized Breakdown: Seat reservation, boyfriend tech support warranty, and snack buffer protocol.
-  - Sarcastic Promo Code field: enter `UR_CUTE` or `FREE` for 100% discount!
-- **Prominent Button**: `"pay $499 & confirm ♡"`
-- **Go Back Link**: Clicking `"go back"` triggers a humorous toast: *"403 Forbidden: Contract is legally binding! No takebacks allowed 😉"*.
-- **Post-Payment Modal & Extras**:
-  - Official Date Ticket Receipt (`PAID $0.00`).
-  - **Download Calendar Invite (.ics)**: Generates a genuine `.ics` calendar invitation file.
-  - **Copy Confirmation Text**: Copies a playful text message to clipboard for easy texting.
-  - **Replay Demo**: Resets the app to watch the IT guy panic all over again.
+5. **Soundboard**:
+   - Grid of styled sound buttons with gradients, emojis, and keyboard shortcuts (`1` to `9`, `0`, `G`, `B`).
+   - Powered by an instant zero-dependency **Web Audio API synthesizer** (airhorns, sad trombone, bonk, 8-bit victory, laser, coin ping, level up fanfare, dramatic sub-bass boom, and crowd cheer).
+   - Includes custom audio file uploader to test your squad's personal voice memos or MP3 clips live!
+   - Master volume slider and live animated waveform bars.
 
 ---
 
-## 🚀 How to Run Locally
+## 📁 How To Swap In Your Real Data
 
-### Option 1: Direct File Opening
-Double-click `index.html` in file explorer or open it directly in any modern browser (Chrome, Edge, Safari, Firefox).
-
-### Option 2: Node.js Local Server
-```bash
-node server.js
+All mock data is cleanly separated in:
 ```
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+src/data/squadData.json
+```
+
+### 1. Swapping Photos
+- **Option A (Local images):** Put your image files (e.g. `alex.jpg`, `crew-banner.jpg`) in the `public/` folder, then set:
+  ```json
+  "avatar": "/alex.jpg"
+  ```
+- **Option B (Direct URLs):** Paste any direct image link from Discord, Imgur, Google Drive, or Unsplash:
+  ```json
+  "avatar": "https://i.imgur.com/your-image.jpg"
+  ```
+
+### 2. Changing Names, Roles & Stats
+Open `src/data/squadData.json` and edit each member:
+```json
+{
+  "id": "member-1",
+  "name": "Your Friend's Name",
+  "nickname": "Their Nickname",
+  "role": "The Tactician",
+  "avatar": "/photo.jpg",
+  "quote": "Their favorite line...",
+  "stats": [
+    { "name": "Coffee Dependency", "value": 95, "rating": "Lethal" },
+    { "name": "Punctuality", "value": 12, "rating": "Never On Time" }
+  ]
+}
+```
+
+### 3. In-App Data Manager
+You can also click the **"Swap Data / JSON"** button in the top navigation bar to view, edit, or copy the entire squad JSON live right inside the web app!
 
 ---
 
-## 📂 File Structure
+## 🚀 Running the Project
 
-```
-├── index.html                   # Main multi-step application
-├── README.md                    # Documentation
-├── server.js                    # Lightweight static file server
-├── test-dating-app.js           # Automated verification test suite
-├── assets/
-│   └── images/
-│       ├── cute-pug.svg         # Animated avatar with glasses and rose
-│       └── happy-pug.svg        # Celebration avatar with party hat
-├── css/
-│   └── dating.css               # Design tokens, soft shadows, keyframe animations
-└── js/
-    └── dating.js                # State management, runaway NO button, audio synth, confetti, .ics export
-```
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open your browser at:
+   ```
+   http://localhost:3000
+   ```
