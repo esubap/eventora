@@ -7,6 +7,22 @@
 // ==========================================================================
 // 1. App State & Storage Keys
 // ==========================================================================
+// Safe localStorage wrapper to prevent crashes in private mode or restrictive browsers
+const safeStorage = {
+  getItem(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
+  },
+  setItem(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+};
+
 const STORAGE_KEYS = {
   API_KEY: 'papi_gemini_api_key',
   API_PROVIDER: 'papi_api_provider',
@@ -21,12 +37,18 @@ const STORAGE_KEYS = {
 
 const state = {
   currentTab: 'chat',
-  theme: localStorage.getItem(STORAGE_KEYS.THEME) || 'dark',
-  apiKey: localStorage.getItem(STORAGE_KEYS.API_KEY) || '',
-  apiProvider: localStorage.getItem(STORAGE_KEYS.API_PROVIDER) || 'gemini',
-  voiceRate: parseFloat(localStorage.getItem(STORAGE_KEYS.VOICE_RATE)) || 1.0,
-  voiceAccent: localStorage.getItem(STORAGE_KEYS.VOICE_ACCENT) || 'en-US',
-  starredPhrases: JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]'),
+  theme: safeStorage.getItem(STORAGE_KEYS.THEME) || 'dark',
+  apiKey: safeStorage.getItem(STORAGE_KEYS.API_KEY) || '',
+  apiProvider: safeStorage.getItem(STORAGE_KEYS.API_PROVIDER) || 'gemini',
+  voiceRate: parseFloat(safeStorage.getItem(STORAGE_KEYS.VOICE_RATE)) || 1.0,
+  voiceAccent: safeStorage.getItem(STORAGE_KEYS.VOICE_ACCENT) || 'en-US',
+  starredPhrases: (() => {
+    try {
+      return JSON.parse(safeStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]');
+    } catch (e) {
+      return [];
+    }
+  })(),
   chatHistory: [],
   isRecording: false,
   recognition: null,
@@ -38,7 +60,7 @@ const state = {
   quizStreak: 0,
   quizAnswered: false,
   // Streak tracker
-  streakDays: parseInt(localStorage.getItem(STORAGE_KEYS.STREAK) || '3', 10)
+  streakDays: parseInt(safeStorage.getItem(STORAGE_KEYS.STREAK) || '3', 10)
 };
 
 // ==========================================================================
@@ -157,8 +179,12 @@ const TTSEngine = {
   init() {
     if ('speechSynthesis' in window) {
       const loadVoices = () => {
-        this.voices = window.speechSynthesis.getVoices().filter(v => v.lang.startsWith('en'));
-        this.populateVoiceSelect();
+        try {
+          this.voices = window.speechSynthesis.getVoices().filter(v => v && v.lang && v.lang.startsWith('en'));
+          this.populateVoiceSelect();
+        } catch (e) {
+          console.warn('TTS voice load warning:', e);
+        }
       };
       loadVoices();
       if (window.speechSynthesis.onvoiceschanged !== undefined) {
@@ -1596,18 +1622,58 @@ const NavigationManager = {
 // ==========================================================================
 // 8. Bootstrap & Application Initialization
 // ==========================================================================
-document.addEventListener('DOMContentLoaded', () => {
-  TTSEngine.init();
-  STTEngine.init();
-  SettingsManager.init();
-  NavigationManager.init();
-  ChatController.init();
-  FlashcardsController.init();
-  QuizController.init();
+function bootstrapApp() {
+  try {
+    TTSEngine.init();
+  } catch (e) {
+    console.warn('TTS init error:', e);
+  }
+
+  try {
+    STTEngine.init();
+  } catch (e) {
+    console.warn('STT init error:', e);
+  }
+
+  try {
+    SettingsManager.init();
+  } catch (e) {
+    console.warn('Settings init error:', e);
+  }
+
+  try {
+    NavigationManager.init();
+  } catch (e) {
+    console.warn('Navigation init error:', e);
+  }
+
+  try {
+    ChatController.init();
+  } catch (e) {
+    console.warn('Chat init error:', e);
+  }
+
+  try {
+    FlashcardsController.init();
+  } catch (e) {
+    console.warn('Flashcards init error:', e);
+  }
+
+  try {
+    QuizController.init();
+  } catch (e) {
+    console.warn('Quiz init error:', e);
+  }
 
   // Streak counter display
   const streakEl = document.getElementById('user-streak-counter');
   if (streakEl) streakEl.textContent = `${state.streakDays} ቀናት (Days Streak)`;
 
   console.log('✅ Papi English: AI English Teacher for Amharic Speakers initialized.');
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrapApp);
+} else {
+  bootstrapApp();
+}
