@@ -1,16 +1,637 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>THE CREW | Squad & Friendship Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-purple-500 selection:text-white min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="am" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papi English 🤖 | ፓፒ እንግሊዝኛ - የእንግሊዝኛ ቋንቋ አሰልጣኝ</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Papi English (ፓፒ እንግሊዝኛ) - Modern AI English teacher for Amharic speakers. Learn everyday conversational English with interactive chat, Ge'ez phonetic guides, vocabulary quizzes, and speech practice." />
+  <meta name="keywords" content="Amharic English learning, ፓፒ እንግሊዝኛ, learn English in Amharic, Ethiopian English tutor, Ge'ez phonetics, Amharic grammar" />
+  <meta name="theme-color" content="#0a0f1d" />
+
+  <!-- Google Fonts: Noto Sans Ethiopic (Amharic) + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>" />
+</head>
+<body>
+
+  <!-- Ambient Animated Lighting Effects -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+
+  <!-- Header / Top Navigation -->
+  <header class="app-header">
+    <div class="nav-container">
+      
+      <!-- Brand & Title -->
+      <a href="#chat" class="brand-wrapper" title="ወደ መነሻ ተመለስ (Home)">
+        <div class="brand-logo-icon">
+          🤖
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-title">
+            <span>Papi English</span>
+            <span style="font-size: 0.9rem;">✨</span>
+          </div>
+          <div class="brand-amharic">ፓፒ እንግሊዝኛ አሰልጣኝ</div>
+        </div>
+      </a>
+
+      <!-- Language Badge -->
+      <div class="lang-badge" title="የቋንቋ ልውውጥ ድጋፍ">
+        <span>🇪🇹 አማርኛ</span>
+        <span>⇄</span>
+        <span>🇬🇧 English</span>
+      </div>
+
+      <!-- Desktop Nav Tabs -->
+      <nav class="nav-tabs" aria-label="Main Navigation">
+        <button class="nav-tab-btn active" data-tab="chat">
+          <span>💬</span>
+          <span>Chat Tutor (ውይይት)</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="phrasebook">
+          <span>📖</span>
+          <span>Phrasebook (ጠቃሚ አባባሎች)</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="quiz">
+          <span>🎯</span>
+          <span>Quiz Arena (ፈተና)</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="lessons">
+          <span>📚</span>
+          <span>Daily Lessons (የትምህርት ክፍሎች)</span>
+        </button>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="header-actions">
+        <!-- API Settings Toggle -->
+        <button id="open-api-modal-btn" class="icon-btn" title="የኤአይ ቁልፍ ቅንብር (AI Engine Settings)">
+          <span>⚙️</span>
+          <span id="api-status-dot" class="api-status-dot offline" title="Offline Intelligent AI Mode"></span>
+        </button>
+
+        <!-- Theme Mode Switcher -->
+        <button id="theme-toggle-btn" class="icon-btn" title="የገጽታ ቀለም ይቀይሩ (Toggle Dark/Light Mode)">
+          ☀️
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero Banner with Streak & Motivational Quote -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h1 class="hero-headline-amharic">
+          <span>እንግሊዝኛን በቀላሉ ከፓፒ ጋር ይማሩ!</span>
+          <span>🇪🇹✨</span>
+        </h1>
+        <p class="hero-headline-english">
+          Master everyday English step-by-step with interactive AI feedback, Amharic translations, and voice practice.
+        </p>
+
+        <div class="hero-stats-row">
+          <div class="stat-pill streak">
+            <span>🔥</span>
+            <span id="user-streak-counter">3 ቀናት (Days Streak)</span>
+          </div>
+          <div class="stat-pill progress">
+            <span>💡</span>
+            <span>20+ አዳዲስ የንግግር አባባሎች ተዘጋጅተዋል</span>
+          </div>
+          <div class="stat-pill" style="border-color: rgba(6, 182, 212, 0.3); color: var(--accent-cyan);">
+            <span>🎙️</span>
+            <span>የድምፅ አነባበብ ድጋፍ (Web Audio TTS)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Mode Selector Cards -->
+    <section class="mode-cards-grid" aria-label="Learning Modes">
+      <!-- Mode A -->
+      <div class="mode-card active" data-tab="chat">
+        <div class="mode-card-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-primary);">
+          🤖
+        </div>
+        <div class="mode-card-info">
+          <h3>Papi AI Tutor <span style="font-size: 0.75rem;">(ውይይት)</span></h3>
+          <p>በእንግሊዝኛ ወይም በአማርኛ ይወያዩ፤ ፓፒ ሰዋሰውዎን እያረመ ትክክለኛውን አነባበብ ያስተምርዎታል።</p>
+        </div>
+        <span class="mode-card-badge">Mode A</span>
+      </div>
+
+      <!-- Mode B -->
+      <div class="mode-card" data-tab="phrasebook">
+        <div class="mode-card-icon" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan);">
+          🃏
+        </div>
+        <div class="mode-card-info">
+          <h3>Phrasebook & Cards <span style="font-size: 0.75rem;">(አባባሎች)</span></h3>
+          <p>የተመረጡ 3D ፍላሽ ካርዶች ከነድምፃቸው፤ ለስራ ቃለ-መጠይቅ፣ ጉዞ፣ ሆቴል እና ካፌ።</p>
+        </div>
+        <span class="mode-card-badge">Mode B</span>
+      </div>
+
+      <!-- Mode C -->
+      <div class="mode-card" data-tab="quiz">
+        <div class="mode-card-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber);">
+          🎯
+        </div>
+        <div class="mode-card-info">
+          <h3>Practice Quiz Arena <span style="font-size: 0.75rem;">(ፈተና)</span></h3>
+          <p>ኢትዮጵያውያን ተማሪዎች የሚሳሳቷቸውን የተለመዱ የእንግሊዝኛ ሰዋሰው ስህተቶች ፈትነው ይወቁ!</p>
+        </div>
+        <span class="mode-card-badge">Mode C</span>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 1: PAPI CHAT TUTOR (MAIN CORE ENGINE)
+         ==================================================================== -->
+    <div id="tab-chat" class="tab-pane active">
+      <div class="chat-container-layout">
+        
+        <!-- Main Chat Box -->
+        <section class="chat-main-window" aria-label="Interactive Chat Window">
+          
+          <!-- Chat Header -->
+          <div class="chat-header">
+            <div class="chat-tutor-profile">
+              <div class="tutor-avatar-frame">
+                🤖
+                <div class="online-pulse" title="አሰልጣኝ ፓፒ ዝግጁ ነው (Online)"></div>
+              </div>
+              <div class="tutor-info">
+                <h4>
+                  <span>Papi AI Coach (ፓፒ)</span>
+                  <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: var(--accent-primary); padding: 0.15rem 0.45rem; border-radius: var(--radius-full);">Active</span>
+                </h4>
+                <div class="tutor-status-text">የእንግሊዝኛ ቋንቋ አጋዥ • ዝግጁ ነኝ ይፃፉልኝ</div>
+              </div>
+            </div>
+
+            <div class="chat-header-actions">
+              <button id="clear-chat-btn" class="icon-btn" title="ውይይቱን አጽዳ (Clear Chat History)">
+                🗑️
+              </button>
+            </div>
+          </div>
+
+          <!-- Chat Messages Container -->
+          <div id="chat-messages" class="chat-messages-box">
+            <!-- Populated dynamically via app.js -->
+          </div>
+
+          <!-- Quick Suggestion Reply Chips -->
+          <div class="quick-replies-tray" aria-label="Quick Prompts">
+            <button class="chip-btn" data-prompt="ሰላምታዎችን በጨዋነት እንዴት መለዋወጥ እንደምችል አስተምረኝ">
+              👋 ሰላምታዎችን አስተምረኝ
+            </button>
+            <button class="chip-btn" data-prompt="ለስራ ቃለ-መጠይቅ (Job interview) እንዴት መዘጋጀት እችላለሁ?">
+              💼 የስራ ቃለ-መጠይቅ (Interview Prep)
+            </button>
+            <button class="chip-btn" data-prompt="I am agree with your plan">
+              ✍️ "I am agree" (Grammar እርማት)
+            </button>
+            <button class="chip-btn" data-prompt="በካፌ ውስጥ ቡና እና ቁርስ በእንግሊዝኛ እንዴት ማዘዝ እችላለሁ?">
+              ☕ ቡና ቤት / ሬስቶራንት ማዘዝ
+            </button>
+            <button class="chip-btn" data-prompt="በታክሲ ወይም በኤርፖርት መንገድ እንዴት መጠየቅ እችላለሁ?">
+              🚕 ታክሲ እና አቅጣጫ መጠየቅ
+            </button>
+            <button class="chip-btn" data-prompt="እኔ ተማሪ ነኝ በእንግሊዝኛ ምን ይባላል?">
+              🗣️ እኔ ተማሪ ነኝ (Introduce yourself)
+            </button>
+          </div>
+
+          <!-- Chat Input Bar -->
+          <div class="chat-input-bar">
+            <form id="chat-form" class="chat-form" autocomplete="off">
+              <input 
+                type="text" 
+                id="chat-input" 
+                class="chat-input-field" 
+                placeholder="በእንግሊዝኛ ወይም በአማርኛ ይጠይቁ... Type in English or Amharic" 
+                required 
+              />
+
+              <!-- Speech to Text Microphone Button -->
+              <button type="button" id="mic-btn" class="mic-btn" title="በድምፅ ይናገሩ (Speak with Microphone)">
+                🎙️
+              </button>
+
+              <!-- Send Button -->
+              <button type="submit" class="send-btn" title="ላክ (Send Message)">
+                ➤
+              </button>
+            </form>
+          </div>
+
+        </section>
+
+        <!-- Chat Side Panel (Voice Settings & Habesha English Tips) -->
+        <aside class="chat-side-panel">
+          
+          <!-- Audio Pronunciation Settings -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <span>🔊</span>
+              <span>የድምፅ አነባበብ ቅንብር (Voice Settings)</span>
+            </div>
+            
+            <div class="voice-control-group">
+              <div class="control-row">
+                <span>የአነባበብ ፍጥነት (Speed):</span>
+                <span id="voice-speed-display" style="font-weight: 700; color: var(--accent-primary);">1.0x</span>
+              </div>
+              <input type="range" id="voice-speed-slider" min="0.6" max="1.4" step="0.1" value="1.0" style="width: 100%; cursor: pointer;" />
+              
+              <div class="control-row" style="margin-top: 0.5rem;">
+                <span>የድምፅ ለዛ (Accent):</span>
+              </div>
+              <select id="voice-accent-select" class="custom-select" style="width: 100%;">
+                <option value="en-US">US English (አሜሪካዊ ለዛ)</option>
+                <option value="en-GB">British English (ብሪታንያዊ ለዛ)</option>
+                <option value="en-AU">Australian English (አውስትራሊያዊ ለዛ)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Habesha English Survival Tips -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <span>💡</span>
+              <span>የፓፒ ፈጣን ምክሮች (Habesha Tips)</span>
+            </div>
+            <ul class="tips-bullet-list">
+              <li>
+                <span>⚠️</span>
+                <div>
+                  <strong>"I am agree" አንበል!</strong><br />
+                  ትክክለኛው <strong>"I agree"</strong> ወይም "I agree with you" ነው።
+                </div>
+              </li>
+              <li>
+                <span>⚠️</span>
+                <div>
+                  <strong>"Married with" አይባልም!</strong><br />
+                  የትዳር አጋርን ስንጠቅስ <strong>"Married to"</strong> እንላለን።
+                </div>
+              </li>
+              <li>
+                <span>⚠️</span>
+                <div>
+                  <strong>የP እና B የድምፅ ልዩነት:</strong><br />
+                  "P" ንፋስ አውጥተን በኃይል (ፓ/ፖ)፤ "B" ደግሞ ቀለል አድርገን (ባ/ቦ) እናንብብ።
+                </div>
+              </li>
+              <li>
+                <span>⚠️</span>
+                <div>
+                  <strong>"Didn't" ሲገባ ግሱ አይቀየርም!</strong><br />
+                  "I didn't saw" ሳይሆን <strong>"I didn't see"</strong> ይበሉ።
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         TAB 2: BILINGUAL PHRASEBOOK & FLASHCARDS
+         ==================================================================== -->
+    <div id="tab-phrasebook" class="tab-pane">
+      
+      <!-- Phrasebook Controls & Search -->
+      <div class="phrasebook-header-bar">
+        <div class="phrase-search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="phrase-search" 
+            class="phrase-search-input" 
+            placeholder="አባባል ፈልግ (Search Amharic, English, or phonetics)..." 
+          />
+        </div>
+
+        <div class="category-filter-chips">
+          <button class="filter-chip active" data-category="all">ሁሉንም (All)</button>
+          <button class="filter-chip" data-category="starred">የተመረጡ ★ (Favorites)</button>
+          <button class="filter-chip" data-category="basics">መሰረታዊ (Basics)</button>
+          <button class="filter-chip" data-category="restaurant">ምግብና ገበያ (Cafe & Food)</button>
+          <button class="filter-chip" data-category="travel">ጉዞና ታክሲ (Travel)</button>
+          <button class="filter-chip" data-category="career">ስራና ኢንተርቪው (Job & Career)</button>
+          <button class="filter-chip" data-category="emergency">ጤናና ድንገተኛ (Health)</button>
+        </div>
+      </div>
+
+      <!-- Flashcards Grid -->
+      <div id="flashcards-container" class="flashcards-grid">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+
+    </div>
+
+    <!-- ====================================================================
+         TAB 3: PRACTICE QUIZ ARENA
+         ==================================================================== -->
+    <div id="tab-quiz" class="tab-pane">
+      <div class="quiz-arena-wrapper">
+        
+        <!-- Quiz Header Score & Progress -->
+        <div class="quiz-header-card">
+          <div class="quiz-progress-section">
+            <div class="quiz-step-count">
+              <span id="quiz-question-number">ጥያቄ 1 ከ 8</span>
+              <span>የእድገት ደረጃ</span>
+            </div>
+            <div class="progress-track">
+              <div id="quiz-progress-bar" class="progress-fill" style="width: 12.5%;"></div>
+            </div>
+          </div>
+
+          <div class="quiz-score-display">
+            <div class="score-badge-circle">
+              <strong id="quiz-current-score">0</strong>
+              <span>ነጥብ (Score)</span>
+            </div>
+            <div class="score-badge-circle">
+              <strong id="quiz-current-streak" style="color: var(--accent-amber);">0</strong>
+              <span>ተከታታይ (Streak) 🔥</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Box -->
+        <div class="quiz-question-card">
+          
+          <div class="question-meta-row">
+            <span id="quiz-category-tag" class="question-category-tag">Grammar</span>
+            <button id="quiz-listen-btn" class="quiz-speaker-btn" title="ጥያቄውን ጮክ ብሎ ያዳምጡ">
+              <span>🔊</span>
+              <span>Listen</span>
+            </button>
+          </div>
+
+          <!-- English Question -->
+          <div id="quiz-question-en" class="quiz-prompt-english">
+            I ______ with your suggestion. It makes a lot of sense.
+          </div>
+
+          <!-- Amharic Context -->
+          <div id="quiz-context-am" class="quiz-prompt-amharic">
+            በአማርኛ "እስማማለሁ" ስንል በእንግሊዝኛ ትክክለኛው አጠቃቀም የትኛው ነው?
+          </div>
+
+          <!-- Multiple Choice Options -->
+          <div id="quiz-options-list" class="quiz-options-list">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Explanation Container (Appears after selecting answer) -->
+          <div id="quiz-explanation" class="quiz-explanation-box"></div>
+
+          <!-- Action Controls -->
+          <div class="quiz-controls-bar">
+            <button id="quiz-hint-btn" class="btn-secondary" title="ፍንጭ ይመልከቱ">
+              <span>💡</span>
+              <span>ፍንጭ (Hint)</span>
+            </button>
+
+            <button id="quiz-next-btn" class="btn-primary" disabled>
+              ቀጣይ ጥያቄ (Next Question) ➔
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         TAB 4: DAILY LESSONS & GRAMMAR TIPS
+         ==================================================================== -->
+    <div id="tab-lessons" class="tab-pane">
+      <div class="lessons-grid">
+        
+        <!-- Lesson 1 -->
+        <article class="lesson-card">
+          <div class="lesson-card-banner">
+            <span class="lesson-card-badge">Lesson 1 • ሰዋሰው</span>
+            <span style="font-size: 1.25rem;">📘</span>
+          </div>
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-en">The Verb "To Be" (am, is, are)</h3>
+            <div class="lesson-title-am">ነው / ነኝ / ናት / ናቸው በኢትዮጵያዊ አረዳድ</div>
+            <p class="lesson-snippet">
+              በአማርኛ "እኔ አስተማሪ" ብለን ግሱን ሳንናገር መቅረት እንችላለን፤ በእንግሊዝኛ ግን ያለ "To Be" ግስ ዓረፍተ ነገር አይመሰረትም።
+            </p>
+            <div class="lesson-rule-highlight">
+              <div class="rule-comparison">
+                <span class="rule-wrong">❌ I student.</span>
+                <span class="rule-correct">✅ I am a student.</span>
+                <span class="rule-correct">✅ She is an engineer.</span>
+              </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">
+              📌 ማስታወሻ: ነጠላ ሙያ ሲሆን "a" ወይም "an" ማስገባት አይርሱ!
+            </p>
+          </div>
+        </article>
+
+        <!-- Lesson 2 -->
+        <article class="lesson-card">
+          <div class="lesson-card-banner">
+            <span class="lesson-card-badge" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">Lesson 2 • ጥያቄ መጠየቅ</span>
+            <span style="font-size: 1.25rem;">❓</span>
+          </div>
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-en">Asking Questions: Do vs Are</h3>
+            <div class="lesson-title-am">በእንግሊዝኛ እንዴት ጥያቄ እንጠይቃለን?</div>
+            <p class="lesson-snippet">
+              ብዙ ተማሪዎች "Are you have money?" በማለት ይሳሳታሉ። የተግባር ግስ (Action verb) ሲኖር "Do" ወይም "Does"፤ ሁኔታ ሲሆን ደግሞ "Are/Is" እንጠቀማለን።
+            </p>
+            <div class="lesson-rule-highlight">
+              <div class="rule-comparison">
+                <span class="rule-wrong">❌ Are you have coffee?</span>
+                <span class="rule-correct">✅ Do you have coffee?</span>
+                <span class="rule-correct">✅ Are you thirsty? (ሁኔታ)</span>
+              </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">
+              📌 ማስታወሻ: "Do you like...?", "Do you know...?" የተለመዱ ናቸው።
+            </p>
+          </div>
+        </article>
+
+        <!-- Lesson 3 -->
+        <article class="lesson-card">
+          <div class="lesson-card-banner">
+            <span class="lesson-card-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-amber);">Lesson 3 • አነባበብ</span>
+            <span style="font-size: 1.25rem;">🎙️</span>
+          </div>
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-en">5 Pronunciation Pitfalls for Habesha Speakers</h3>
+            <div class="lesson-title-am">የኢትዮጵያውያን 5 ዋነኛ የአነባበብ ተግዳሮቶች</div>
+            <p class="lesson-snippet">
+              በአማርኛ እና በእንግሊዝኛ የድምፅ ልዩነቶች ምክንያት የሚፈጠሩትን ስህተቶች ማወቅ አነባበብዎን ያሳምረዋል።
+            </p>
+            <div class="lesson-rule-highlight">
+              <div class="rule-comparison">
+                <div><strong>1. P vs B:</strong> Pen (ፔን) እንጂ Ben (ቤን) እንዳይባል ንፋስ ያውጡ።</div>
+                <div><strong>2. F vs V:</strong> Very (ቬሪ - ከንፈርና ጥርስ) እንጂ Fery አይደለም።</div>
+                <div><strong>3. TH ድምፅ:</strong> Think (ሲንክ ሳይሆን ስስ 'ስ')፤ This (ዚስ ሳይሆን ስስ 'ዝ')።</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Lesson 4 -->
+        <article class="lesson-card">
+          <div class="lesson-card-banner">
+            <span class="lesson-card-badge" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple);">Lesson 4 • ስራና ሙያ</span>
+            <span style="font-size: 1.25rem;">💼</span>
+          </div>
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-en">How to Pitch Yourself in 60 Seconds</h3>
+            <div class="lesson-title-am">በስራ ቃለ-መጠይቅ ስለ ራስዎ በ1 ደቂቃ እንዴት ይናገራሉ?</div>
+            <p class="lesson-snippet">
+              "Tell me about yourself" ሲባሉ እድሜዎንና ቤተሰብዎን ሳይሆን የትምህርት ዝግጅትዎን፣ ዋና ጥንካሬዎን እና ለድርጅቱ የሚሰጡትን አስተዋጽኦ ያብራሩ።
+            </p>
+            <div class="lesson-rule-highlight">
+              <div class="rule-comparison">
+                <span class="rule-correct">"I am a software professional with 3 years of experience. My greatest strength is solving problems efficiently."</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-nav-bar" aria-label="Mobile Navigation">
+    <button class="mobile-nav-item active" data-tab="chat">
+      <span class="icon">💬</span>
+      <span>ውይይት</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="phrasebook">
+      <span class="icon">📖</span>
+      <span>አባባሎች</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="quiz">
+      <span class="icon">🎯</span>
+      <span>ፈተና</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="lessons">
+      <span class="icon">📚</span>
+      <span>ትምህርቶች</span>
+    </button>
+  </nav>
+
+  <!-- ====================================================================
+       MODAL 1: API SETTINGS MODAL
+       ==================================================================== -->
+  <div id="api-settings-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>
+          <span>⚙️</span>
+          <span>የኤአይ ሞተር ቅንብር (AI Engine Settings)</span>
+        </h3>
+        <button id="close-api-modal" class="modal-close-btn" title="ዝጋ">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="api-key-input">Gemini API Key (የኤአይ ቁልፍ - አማራጭ):</label>
+          <input 
+            type="password" 
+            id="api-key-input" 
+            placeholder="AIzaSy..." 
+            autocomplete="off"
+          />
+          <p class="help-text">
+            💡 <strong>ማስታወሻ:</strong> ምንም ቁልፍ ሳያስገቡ መተግበሪያው በውስጣዊው ብልህ አሰልጣኝ (Intelligent Offline Simulation) ሙሉ በሙሉ ይሰራል! ነገር ግን የቀጥታ የጉግል ጀሚኒን (Gemini 1.5 Flash) ኤአይ መሞከር ከፈለጉ የራስዎን ቁልፍ እዚህ ማስገባት ይችላሉ።
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>የአሁኑ የስራ ሁኔታ (Status):</label>
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--accent-primary);">
+            <span>🟢</span>
+            <span>Intelligent Offline Fallback Engine ዝግጁ ነው (100% ነፃ እና ፈጣን)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="save-api-key-btn" class="btn-primary" style="padding: 0.55rem 1.4rem; font-size: 0.88rem;">
+          ቅንብሩን መዝግብ (Save Settings)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: QUIZ RESULT CELEBRATION MODAL
+       ==================================================================== -->
+  <div id="quiz-result-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card quiz-result-card">
+      <div id="celebration-trophy-icon" class="celebration-trophy">🏆</div>
+      <div class="result-score-headline" id="result-final-score">80 / 80 (100%)</div>
+      <div class="result-message-am" id="result-message-am">ድንቅ ውጤት! እንግሊዝኛዎ ከፍተኛ ደረጃ ላይ ይገኛል።</div>
+      <div class="result-message-en" id="result-message-en">Outstanding performance! Keep practicing daily to maintain fluency.</div>
+
+      <div style="display: flex; justify-content: center; gap: 1rem;">
+        <button id="quiz-restart-btn" class="btn-primary">
+          <span>🔄</span>
+          <span>ዳግም ይሞክሩ (Try Again)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div style="font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.4rem;">
+        <span>Papi English 🤖</span>
+        <span>•</span>
+        <span>ፓፒ እንግሊዝኛ</span>
+      </div>
+      <div class="footer-amharic">
+        ለኢትዮጵያውያን ተማሪዎች የተዘጋጀ ዘመናዊ የእንግሊዝኛ ቋንቋ አሰልጣኝ
+      </div>
+      <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.25rem;">
+        Built with clean semantic HTML5, CSS3 & Modern Vanilla JS • Web Speech Synthesis API
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="./app.js"></script>
+</body>
 </html>

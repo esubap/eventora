@@ -1,97 +1,79 @@
-# ⚡ Squad & Friendship Hub
+# 🤖 Papi English: AI English Teacher for Amharic Speakers
+### (ፓፒ እንግሊዝኛ - የእንግሊዝኛ ቋንቋ አሰልጣኝ)
 
-A modern, responsive, ultra-slick web application for friend groups, gaming squads, and tight-knit crews built with **React**, **Vite**, and **Tailwind CSS**.
-
----
-
-## 🌟 Features Included
-
-1. **Hero Section**:
-   - Dynamic crew branding (`The Chaos Syndicate`), active streak counter (`584 Days Active 🔥`), live voice chat status pill, and animated rotating catchphrases.
-   - High-impact bold group banner with stacked member avatars, real-time presence indicators (online/idle/dnd), and key stats (pizza eaten, lag excuses, 3 AM voice calls).
-
-2. **Squad Roster**:
-   - Character/RPG trading card-style member profiles.
-   - Includes real photo avatars, role badges (e.g. *The Tactician*, *The Chaos Gremlin*, *The Silent Carry*), nicknames, iconic quotes, special perks, and funny stat meters (Clutch Potential, Coffee Dependency, Punctuality, Voice Volume).
-   - Click any card to open a full **Dossier Modal** with lore, loadouts, and an interactive **Hype Member** button with confetti effects!
-
-3. **The Quote Wall**:
-   - Searchable and filterable archive of legendary squad moments.
-   - Filter by category (*Gaming Rage*, *3 AM Epiphanies*, *Food Debates*, *Famous Last Words*, *Out of Context*, *Pure Wisdom*) and by squad member.
-   - Interactive reactions (🔥, 😂, 💀, 🧢) with live counters.
-   - One-click copy quote button with instant feedback.
-   - **+ Add Iconic Quote** modal to record new moments in real-time.
-
-4. **The Decision Wheel**:
-   - Interactive HTML5 canvas spinning wheel with realistic physics and deceleration.
-   - Pre-loaded dispute presets:
-     - *Where Are We Eating? 🌮*
-     - *What Game To Play? 🎮*
-     - *Who Takes The Blame / Pays? 💳*
-     - *Weekend Quest 🍿*
-   - Add custom slices on the fly, remove slices, spin with sound effects, and celebrate with a confetti explosion upon picking a winner!
-   - Saves recent decision history.
-
-5. **Soundboard**:
-   - Grid of styled sound buttons with gradients, emojis, and keyboard shortcuts (`1` to `9`, `0`, `G`, `B`).
-   - Powered by an instant zero-dependency **Web Audio API synthesizer** (airhorns, sad trombone, bonk, 8-bit victory, laser, coin ping, level up fanfare, dramatic sub-bass boom, and crowd cheer).
-   - Includes custom audio file uploader to test your squad's personal voice memos or MP3 clips live!
-   - Master volume slider and live animated waveform bars.
+A modern, responsive single-page web application designed specifically to empower native Amharic speakers to master conversational everyday English through intelligent interactive AI feedback, Amharic translations, Ge'ez phonetic guides, voice pronunciation practice, interactive 3D flashcards, and a gamified quiz arena.
 
 ---
 
-## 📁 How To Swap In Your Real Data
+## 🌟 Key Features
 
-All mock data is cleanly separated in:
-```
-src/data/squadData.json
-```
+### 1. 🤖 Papi AI Conversational Assistant (Main Engine)
+- **4-Part Structured AI Feedback:**
+  1. 🎯 **Corrected English Sentence** (*ትክክለኛ አገላለጽ*)
+  2. 📖 **Amharic Explanation** (*ትርጉም እና ሰዋስዋዊ ማብራሪያ*)
+  3. 🗣️ **Ge'ez Phonetic Guide** (*የአነባበብ ድምፅ በግዕዝ ፊደላት*)
+  4. 💬 **Follow-up Conversational Question** (*የቀጣይ ልምምድ ጥያቄ*)
+- **Amharic-Specific Error Detection:** Specially programmed to catch and correct the most common English hurdles made by Habesha speakers:
+  - *"I am agree"* ➔ *"I agree"*
+  - *"Married with"* ➔ *"Married to"*
+  - *"He don't"* ➔ *"He doesn't"*
+  - *"Didn't saw"* ➔ *"Didn't see"*
+  - *"Borrow me"* ➔ *"Lend me"*
+  - *"I student"* ➔ *"I am a student"*
+- **Two AI Operational Modes:**
+  - **100% Offline Intelligent Simulation Engine:** Zero API key required, immediate responses, pre-loaded with rich contextual rules for greetings, job interviews, ordering food, directions, and grammar corrections.
+  - **Live Gemini API Integration:** Insert your own Gemini API key via the settings modal to unlock dynamic generative AI conversations while preserving the structured Amharic bilingual format.
 
-### 1. Swapping Photos
-- **Option A (Local images):** Put your image files (e.g. `alex.jpg`, `crew-banner.jpg`) in the `public/` folder, then set:
-  ```json
-  "avatar": "/alex.jpg"
-  ```
-- **Option B (Direct URLs):** Paste any direct image link from Discord, Imgur, Google Drive, or Unsplash:
-  ```json
-  "avatar": "https://i.imgur.com/your-image.jpg"
-  ```
+### 2. 🎙️ Voice & Audio Synthesis Practice
+- **Text-to-Speech (TTS):** Integrated with the Web Speech Synthesis API (`window.speechSynthesis`). Listen to clear, native pronunciation on every English sentence and flashcard with a single click.
+- **Speech Speed Control:** Adjustable speech rate (0.6x to 1.4x) with accent selection (US, British, Australian).
+- **Speech-to-Text (STT):** Tap the microphone button to practice speaking English with live transcription into the chat.
+- **Synthesized UI Sound Effects:** Zero external sound files needed; utilizes the Web Audio API for feedback chimes, pops, and buzzes.
 
-### 2. Changing Names, Roles & Stats
-Open `src/data/squadData.json` and edit each member:
-```json
-{
-  "id": "member-1",
-  "name": "Your Friend's Name",
-  "nickname": "Their Nickname",
-  "role": "The Tactician",
-  "avatar": "/photo.jpg",
-  "quote": "Their favorite line...",
-  "stats": [
-    { "name": "Coffee Dependency", "value": 95, "rating": "Lethal" },
-    { "name": "Punctuality", "value": 12, "rating": "Never On Time" }
-  ]
-}
-```
+### 3. 🃏 3D Bilingual Flashcards & Phrasebook
+- **Interactive 3D Flip Animation:** Click to smoothly flip cards between Amharic and English.
+- **Categorized Phrases:**
+  - 🌟 Everyday Basics (*መሰረታዊ*)
+  - ☕ Restaurant & Food (*ምግብና ገበያ*)
+  - 🚕 Travel & Directions (*ጉዞና ታክሲ*)
+  - 💼 Job Interview & Career (*ስራና ኢንተርቪው*)
+  - 🏥 Health & Emergency (*ጤናና ድንገተኛ*)
+- **Search & Bookmark:** Real-time search across Amharic, English, and phonetic text, plus a favorite/starring system stored in `localStorage`.
 
-### 3. In-App Data Manager
-You can also click the **"Swap Data / JSON"** button in the top navigation bar to view, edit, or copy the entire squad JSON live right inside the web app!
+### 4. 🎯 Grammar & Vocabulary Quiz Arena
+- **Targeted Challenge Questions:** Multi-choice questions focused on specific English traps for Amharic speakers.
+- **Instant Visual & Audio Feedback:** Green glowing states with success chimes, or red shake animations with explanatory Amharic notes on why each distractor is incorrect.
+- **Dynamic Score & Streak Counter:** Real-time progress bar, question counter, and streak counter.
+- **Celebration Modal:** Score tiers, performance ratings in Amharic, and a one-click restart option.
+
+### 5. 📚 Daily Bite-Sized Lessons
+- *Lesson 1:* The Verb "To Be" (am, is, are) in Amharic vs English.
+- *Lesson 2:* Asking Questions: "Do" vs "Are".
+- *Lesson 3:* 5 Pronunciation Pitfalls for Habesha Speakers (P vs B, F vs V, TH sounds).
+- *Lesson 4:* How to Pitch Yourself in a 60-Second Job Interview.
 
 ---
 
-## 🚀 Running the Project
+## 🎨 Design & Typography
+- **Ge'ez Typography Support:** Custom rendering with `'Noto Sans Ethiopic'` and fallback to system fonts (`'Nyala'`, `'Abyssinica SIL'`, `'Kefa'`).
+- **Dark & Light Mode:** Default dark glassmorphic design (`#0a0f1d`) with vibrant emerald (`#10b981`) and teal (`#06b6d4`) accents, with a one-click light theme toggle.
+- **Mobile First Responsive:** Fluid layouts designed for smartphones, tablets, and desktop displays.
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the local development server:
-   ```bash
-   npm run dev
-   ```
+## 🚀 How to Run
 
-3. Open your browser at:
-   ```
-   http://localhost:3000
-   ```
+Because **Papi English** is built with clean semantic HTML5, modern CSS3, and vanilla JavaScript without heavy build-step requirements, you can run it in multiple ways:
+
+### Option 1: Direct Browser Launch
+Simply double-click or open `index.html` in any modern web browser (Google Chrome, Microsoft Edge, Safari, Firefox).
+
+### Option 2: Local Static Server (Node / Vite / Python)
+```bash
+# Using python
+python -m http.server 3000
+
+# Or using npx
+npx serve .
+```
+Then visit `http://localhost:3000` in your browser.
