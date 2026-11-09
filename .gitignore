@@ -28,3 +28,7 @@ lerna-debug.log*
 
 # Backup
 _legacy_backup
+
+# Environment
+.env
+.env*.local

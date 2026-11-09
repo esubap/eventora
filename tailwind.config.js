@@ -8,55 +8,53 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#f0f5ff',
-          100: '#e0ecff',
-          200: '#c7dcff',
-          300: '#9ec4ff',
-          400: '#6ca2ff',
-          500: '#437df8',
-          600: '#2b5ff0',
-          700: '#2149dc',
-          800: '#1e3cb2',
-          900: '#1e378c',
-          950: '#162356',
+        navy: {
+          950: '#070a12',
+          900: '#0B0F19',
+          850: '#101626',
+          800: '#151E34',
+          700: '#1E293B',
+          600: '#334155',
         },
-        squad: {
-          neon: '#06ffa5',
-          purple: '#9d4edd',
-          pink: '#ff007f',
-          orange: '#ff7700',
-          cyan: '#00f0ff',
-          yellow: '#ffe600',
+        eventora: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
+          accent: '#6366f1',
+          electric: '#38bdf8',
+          teal: '#14b8a6',
+          pink: '#f43f5e',
+          amber: '#f59e0b',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Outfit', 'Cabinet Grotesk', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Outfit', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'glow-purple': '0 0 25px -5px rgba(124, 58, 237, 0.45)',
+        'glow-electric': '0 0 25px -5px rgba(56, 189, 248, 0.45)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
       animation: {
-        'spin-slow': 'spin 12s linear infinite',
-        'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite',
-        'pulse-glow': 'pulseGlow 2.5s ease-in-out infinite',
-        'gradient-x': 'gradientX 8s ease infinite',
-        'float': 'float 4s ease-in-out infinite',
+        'float-slow': 'floatSlow 6s ease-in-out infinite',
+        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
       },
       keyframes: {
-        bounceSubtle: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-6px)' },
+        floatSlow: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.6', filter: 'drop-shadow(0 0 15px rgba(157, 78, 221, 0.4))' },
-          '50%': { opacity: '1', filter: 'drop-shadow(0 0 30px rgba(6, 255, 165, 0.7))' },
-        },
-        gradientX: {
-          '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
-          '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-8px) rotate(1deg)' },
+        pulseSubtle: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' },
         }
       }
     },
