@@ -566,24 +566,30 @@
 
       <div class="modal-body">
         <div class="form-group">
-          <label for="api-key-input">Gemini API Key (የኤአይ ቁልፍ - አማራጭ):</label>
+          <label for="api-key-input">Google Gemini API Key (የቀጥታ ኤአይ ቁልፍ - አማራጭ):</label>
           <input 
             type="password" 
             id="api-key-input" 
             placeholder="AIzaSy..." 
             autocomplete="off"
           />
-          <p class="help-text">
-            💡 <strong>ማስታወሻ:</strong> ምንም ቁልፍ ሳያስገቡ መተግበሪያው በውስጣዊው ብልህ አሰልጣኝ (Intelligent Offline Simulation) ሙሉ በሙሉ ይሰራል! ነገር ግን የቀጥታ የጉግል ጀሚኒን (Gemini 1.5 Flash) ኤአይ መሞከር ከፈለጉ የራስዎን ቁልፍ እዚህ ማስገባት ይችላሉ።
+          <p class="help-text" style="line-height: 1.5; margin-top: 0.35rem;">
+            💡 <strong>ነፃ የGemini API ቁልፍ እንዴት ማግኘት ይቻላል? (100% Free):</strong><br />
+            1. ወደ <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); font-weight: 700; text-decoration: underline;">Google AI Studio (aistudio.google.com)</a> ይሂዱ።<br />
+            2. በGoogle አካውንትዎ ይግቡና <strong>"Create API Key"</strong> የሚለውን ይጫኑ።<br />
+            3. ቁልፉን ኮፒ አድርገው እዚህ ያስገቡና <strong>"ቅንብሩን መዝግብ"</strong> ይበሉ!
           </p>
         </div>
 
         <div class="form-group">
           <label>የአሁኑ የስራ ሁኔታ (Status):</label>
-          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--accent-primary);">
+          <div id="modal-status-text" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--accent-primary);">
             <span>🟢</span>
-            <span>Intelligent Offline Fallback Engine ዝግጁ ነው (100% ነፃ እና ፈጣን)</span>
+            <span>ብልህ የውስጥ AI ሞተር (Smart Dynamic Engine) ዝግጁ ነው</span>
           </div>
+          <p class="help-text">
+            📌 ምንም ቁልፍ ባያስገቡም መተግበሪያው በደርዘን የሚቆጠሩ ሰዋሰዋዊ ጥያቄዎችን፣ የቃላት ልዩነቶችን፣ የሀላፊ ጊዜ (Past Tense) ፍለጋን እና ሰላምታዎችን በብልሃት ይመልሳል!
+          </p>
         </div>
       </div>
 

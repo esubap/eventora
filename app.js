@@ -636,6 +636,40 @@ const QUIZ_QUESTIONS = [
 // 5. Intelligent NLP & Papi AI Fallback Knowledge Engine
 // ==========================================================================
 const PapiAIEngine = {
+  // Comprehensive irregular past tense dictionary
+  pastTenseMap: {
+    'go': { past: 'went', am: 'ሄደ (go ➔ went)', ex: 'I went to the market yesterday.' },
+    'eat': { past: 'ate', am: 'በላ (eat ➔ ate)', ex: 'We ate delicious dinner together.' },
+    'see': { past: 'saw', am: 'አየ (see ➔ saw)', ex: 'I saw my teacher at the bookstore.' },
+    'buy': { past: 'bought', am: 'ገዛ (buy ➔ bought)', ex: 'She bought a new laptop last week.' },
+    'come': { past: 'came', am: 'መጣ (come ➔ came)', ex: 'They came to visit us yesterday.' },
+    'take': { past: 'took', am: 'ወሰደ (take ➔ took)', ex: 'He took a taxi to the airport.' },
+    'write': { past: 'wrote', am: 'ፃፈ (write ➔ wrote)', ex: 'I wrote an email to my manager.' },
+    'speak': { past: 'spoke', am: 'ተናገረ (speak ➔ spoke)', ex: 'We spoke in English for one hour.' },
+    'sleep': { past: 'slept', am: 'ተኛ (sleep ➔ slept)', ex: 'I slept for eight hours last night.' },
+    'drink': { past: 'drank', am: 'ጠጣ (drink ➔ drank)', ex: 'He drank a cup of fresh coffee.' },
+    'know': { past: 'knew', am: 'አወቀ (know ➔ knew)', ex: 'I already knew the correct answer.' },
+    'make': { past: 'made', am: 'ሰራ (make ➔ made)', ex: 'She made a wonderful traditional dish.' },
+    'give': { past: 'gave', am: 'ሰጠ (give ➔ gave)', ex: 'He gave me helpful career advice.' },
+    'find': { past: 'found', am: 'አገኘ (find ➔ found)', ex: 'I found my missing house keys.' },
+    'think': { past: 'thought', am: 'አሰበ (think ➔ thought)', ex: 'I thought about your recommendation.' },
+    'bring': { past: 'brought', am: 'አመጣ (bring ➔ brought)', ex: 'She brought traditional gifts.' },
+    'run': { past: 'ran', am: 'ሮጠ (run ➔ ran)', ex: 'He ran fast to catch the city bus.' },
+    'drive': { past: 'drove', am: 'ነዳ (drive ➔ drove)', ex: 'We drove from Addis to Hawassa.' },
+    'read': { past: 'read (ድምፁ "ሬድ")', am: 'አነበበ (read ➔ read)', ex: 'I read an insightful book.' },
+    'meet': { past: 'met', am: 'ተገናኘ (meet ➔ met)', ex: 'We met at the coffee shop.' },
+    'pay': { past: 'paid', am: 'ከፈለ (pay ➔ paid)', ex: 'I paid the restaurant bill in cash.' },
+    'choose': { past: 'chose', am: 'መረጠ (choose ➔ chose)', ex: 'She chose the best learning program.' },
+    'break': { past: 'broke', am: 'ሰበረ (break ➔ broke)', ex: 'The glass broke into small pieces.' },
+    'build': { past: 'built', am: 'ገነባ (build ➔ built)', ex: 'They built a modern high school.' },
+    'teach': { past: 'taught', am: 'አስተማረ (teach ➔ taught)', ex: 'The instructor taught us English grammar.' },
+    'learn': { past: 'learned / learnt', am: 'ተማረ (learn ➔ learned)', ex: 'I learned ten new English words today.' },
+    'tell': { past: 'told', am: 'ነገረ (tell ➔ told)', ex: 'She told me an inspiring story.' },
+    'leave': { past: 'left', am: 'ለቆ ሄደ (leave ➔ left)', ex: 'The flight left on schedule.' },
+    'feel': { past: 'felt', am: 'ተሰማው (feel ➔ felt)', ex: 'I felt confident during the presentation.' },
+    'hear': { past: 'heard', am: 'ሰማ (hear ➔ heard)', ex: 'I heard good news this morning.' }
+  },
+
   // Common grammatical error detectors tailored for Habesha learners
   detectGrammarIssues(text) {
     const lower = text.toLowerCase().trim();
@@ -716,12 +750,12 @@ const PapiAIEngine = {
     return null;
   },
 
-  // Generates smart contextual response
+  // Generates smart contextual response based on the user's specific question
   generateResponse(userMsg) {
     const raw = userMsg.trim();
     const lower = raw.toLowerCase();
 
-    // Check grammar rules first
+    // 1. Check for specific grammar error patterns first
     const grammarCheck = this.detectGrammarIssues(raw);
     if (grammarCheck) {
       return {
@@ -733,70 +767,302 @@ const PapiAIEngine = {
       };
     }
 
-    // Common intent matching
-    // 1. Greetings
-    if (/^(hi|hello|hey|selam|ሰላም|እንደምን|ጤና ይስጥልኝ)/i.test(lower)) {
+    // 2. Identity & About Papi
+    if (/who\s+are\s+you|what\s+is\s+your\s+name|who\s+made\s+you|tell\s+me\s+about\s+yourself|ስምህ|ማን\s+ነህ|ራስህን/i.test(lower)) {
       return {
-        correctedText: 'Hello there! It is wonderful to practice English with you today.',
-        explanation: 'ሰላምታ ለመጀመር "Hello there!" ወይም "Good morning/afternoon" መጠቀም በጣም ተመራጭ እና ጨዋነት ያለው ነው።',
-        phonetic: 'ሄሎ ዜር! ኢት ኢዝ ወንደርፉል ቱ ፕራክቲስ ኢንግሊሽ ዊዝ ዩ ቱደይ።',
-        followupEn: 'How are you feeling today, and what would you like to learn?',
-        followupAm: 'ዛሬ እንዴት ነህ? ምን አይነት የእንግሊዝኛ ርዕስ መለማመድ ትፈልጋለህ?'
+        correctedText: 'My name is Papi. I am your dedicated AI English tutor for Amharic speakers.',
+        explanation: 'ስሜ ፓፒ ይባላል። ለኢትዮጵያውያን ተማሪዎች እንግሊዝኛን በቀላሉ፣ በሰዋሰው እርማት እና በአነባበብ ድምፅ ለማስተማር የተዘጋጀሁ የእርስዎ የግል ኤአይ አሰልጣኝ ነኝ።',
+        phonetic: 'ማይ ኔም ኢዝ ፓፒ። አይ አም ዩር ዲዲኬትድ ኤአይ ኢንግሊሽ ቲዩተር።',
+        followupEn: 'What is your name, and where in Ethiopia or abroad are you currently located?',
+        followupAm: 'ስምህ ማን ይባላል? በአሁኑ ሰዓት የት ሀገር ወይም ከተማ ነው ያለኸው?'
       };
     }
 
-    // 2. Job Interview Prep
-    if (/interview|job|ስራ|ቃለ|መጠይቅ/i.test(lower)) {
+    if (/where\s+are\s+you\s+from|where\s+do\s+you\s+live|የት\s+ነው\s+የምትኖረው|ከየት\s+መጣህ/i.test(lower)) {
       return {
-        correctedText: 'I would like to prepare for my upcoming job interview.',
-        explanation: 'ለስራ ቃለ-መጠይቅ ሲዘጋጁ "Tell me about yourself" (ስለ ራስዎ ይንገሩን) የሚለውን ጥያቄ በደንብ ማወቅ ያስፈልጋል። የትምህርት ዝግጅትዎንና የስራ ልምድዎን በግልጽ መግለጽ ቁልፍ ነው።',
-        phonetic: 'አይ ውድ ላይክ ቱ ፕሪፔር ፎር ማይ አፕከሚንግ ጆብ ኢንተርቪው።',
-        followupEn: 'Could you tell me briefly: what is your profession and greatest strength?',
-        followupAm: 'በአጭሩ ንገረኝ፦ ሙያህ ምንድን ነው? ትልቁ ጥንካሬህስ?'
+        correctedText: 'I live directly in your browser, built to serve students in Addis Ababa and around the globe.',
+        explanation: '"የት ነው የምትኖረው?" ለሚለው ጥያቄ "I live in..." (እኖራለሁ) የሚለውን አገላለጽ እንጠቀማለን። እኔ እዚሁ በስልክዎ ወይም በኮምፒውተርዎ ውስጥ አብሬዎት እገኛለሁ!',
+        phonetic: 'አይ ሊቭ ዳይሬክትሊ ኢን ዩር ብሮውዘር።',
+        followupEn: 'Do you live in Addis Ababa or another beautiful region?',
+        followupAm: 'የምትኖረው በአዲስ አበባ ነው ወይስ በሌላ ውብ ክልል?'
       };
     }
 
-    // 3. Coffee / Restaurant
-    if (/coffee|restaurant|ቡና|ምግብ|ሬስቶራንት|ካፌ|order/i.test(lower)) {
+    if (/how\s+old\s+are\s+you|እድሜህ|ስንት\s+አመትህ/i.test(lower)) {
       return {
-        correctedText: 'I would like to order a traditional Ethiopian coffee and breakfast.',
-        explanation: 'ምግብ ወይም መጠጥ ሲያዝ "I want" ከማለት "I would like to order..." (ማዘዝ እፈልግ ነበር) ማለት የበለጠ ጨዋነትና ክብርን ያሳያል።',
-        phonetic: 'አይ ውድ ላይክ ቱ ኦርደር ኤ ትራዲሽናል ኢትዮጵያን ኮፊ።',
-        followupEn: 'Do you prefer your coffee with sugar, or do you take it black?',
-        followupAm: 'ቡናህን በስኳር ነው የምትወደው ወይስ ጥቁሩን (ያለ ስኳር)?'
+        correctedText: 'I am a timeless AI teacher, always energized and ready to practice English with you!',
+        explanation: 'የእድሜ ጥያቄ ሲጠየቅ "I am ... years old" እንላለን። ለምሳሌ: "I am 24 years old" (የ24 አመት ወጣት ነኝ)።',
+        phonetic: 'አይ አም ኤ ታይምለስ ኤአይ ቲቸር።',
+        followupEn: 'How old are you, if you do not mind me asking?',
+        followupAm: 'የእድሜህ መጠን ስንት ነው? (ልጠይቅህ ከፈቀድክልኝ)'
       };
     }
 
-    // 4. Directions / Travel / Airport
-    if (/where|direction|airport|taxi|ጉዞ|የት ነው|ታክሲ|መንገድ/i.test(lower)) {
+    // 3. How are you / Well-being
+    if (/how\s+are\s+you|how\s+r\s+u|how\s+do\s+you\s+do|how\s+is\s+it\s+going|እንዴት\s+ነህ|እንዴት\s+ነሽ|ደህና\s+ነህ|እንደምን\s+አለህ/i.test(lower)) {
       return {
-        correctedText: 'Excuse me, could you please guide me to the nearest bus station?',
-        explanation: 'መንገድ ስንጠይቅ ሁልጊዜ በ"Excuse me" (ይቅርታ) መጀመር እና "Could you please..." (እባክዎትን...) የሚለውን የትህትና አነጋገር መጠቀም ይመረጣል።',
-        phonetic: 'ኤክስኪውዝ ሚ፣ ኩድ ዩ ፕሊዝ ጋይድ ሚ ቱ ዘ ኔረስት ባስ ስቴሽን?',
-        followupEn: 'Are you planning to travel by taxi, bus, or on foot?',
-        followupAm: 'በታክሲ፣ በአውቶቡስ ወይስ በእግርህ ነው ለመጓዝ ያሰብከው?'
+        correctedText: 'I am doing wonderful, thank you for asking! How about you?',
+        explanation: '"እንዴት ነህ?" ሲባል "I am fine" ብቻ ከማለት "I am doing great / wonderful, thank you for asking!" ማለት የበለጠ ማራኪ እና የተሟላ የእንግሊዝኛ አገላለጽ ነው።',
+        phonetic: 'አይ አም ዱዪንግ ወንደርፉል፣ ቴንክ ዩ ፎር አስኪንግ! ሃው አባውት ዩ?',
+        followupEn: 'How has your day been going so far?',
+        followupAm: 'የዛሬው ውሎህ እስከ አሁን እንዴት እያለፈ ነው?'
       };
     }
 
-    // 5. Translating Amharic input into natural English
+    // 4. Good morning / afternoon / evening / night
+    if (/good\s+morning|እንደምን\s+አደርክ|ደህና\s+አደርክ/i.test(lower)) {
+      return {
+        correctedText: 'Good morning! I wish you a very productive and blessed day ahead.',
+        explanation: '"Good morning" ማለት "እንደምን አደርክ / አደራችሁ" ማለት ሲሆን እስከ ቀኑ 6:00 ሰዓት (12:00 PM) ድረስ ያገለግላል።',
+        phonetic: 'ጉድ ሞርኒንግ! አይ ዊሽ ዩ ኤ ቬሪ ፕሮዳክቲቭ ዴይ።',
+        followupEn: 'Did you have a good night of sleep and enjoy breakfast?',
+        followupAm: 'ጥሩ እንቅልፍ ተኝተህ ቆንጆ ቁርስ በላህ?'
+      };
+    }
+
+    if (/good\s+afternoon|እንደምን\s+ዋልክ|ደህና\s+ዋልክ/i.test(lower)) {
+      return {
+        correctedText: 'Good afternoon! How is your day proceeding so far?',
+        explanation: '"Good afternoon" ማለት "እንደምን ዋልክ / ዋላችሁ" ማለት ሲሆን ከቀኑ 6:00 (12:00 PM) እስከ ምሽቱ 12:00 (6:00 PM) ድረስ ያገለግላል።',
+        phonetic: 'ጉድ አፍተርኑን! ሃው ኢዝ ዩር ዴይ ፕሮሲዲንግ ሶ ፋር?',
+        followupEn: 'Are you working, studying, or relaxing this afternoon?',
+        followupAm: 'በዚህ ከሰዓት በኋላ ስራ ላይ ነህ፣ ትምህርት ወይስ እያረፍክ?'
+      };
+    }
+
+    if (/good\s+night|sweet\s+dreams|ደህና\s+እደር|መልካም\s+ሌሊት/i.test(lower)) {
+      return {
+        correctedText: 'Good night! Have peaceful rest and sweet dreams.',
+        explanation: '"Good night" የሚያገለግለው ለመተኛት ስንሰናበት ብቻ ነው። ገና ምሽት ላይ ስንገናኝ ሰላምታ ለመስጠት "Good evening" እንላለን።',
+        phonetic: 'ጉድ ናይት! ሃቭ ፒስፉል ሬስት ኤንድ ስዊት ድሪምስ።',
+        followupEn: 'What time do you usually wake up in the morning?',
+        followupAm: 'በተለምዶ ጠዋት በስንት ሰዓት ነው ከእንቅልፍህ የምትነሳው?'
+      };
+    }
+
+    // 5. Gratitude / Thanks
+    if (/thank\s+you|thanks|አመሰግናለሁ|እግዚአብሔር\s+ይስጥልኝ/i.test(lower)) {
+      return {
+        correctedText: 'You are most welcome! It is truly my pleasure to support your English journey.',
+        explanation: 'አንድ ሰው "Thank you" ሲለን መልሳችን "You are welcome!" (ምንም አይደል / የበኩሌ ነው) ወይም "My pleasure!" መሆን አለበት።',
+        phonetic: 'ዩ አር ሞስት ዌልካም! ኢት ኢዝ ትሩሊ ማይ ፕሌዠር።',
+        followupEn: 'Is there any other English phrase or question you would like to explore?',
+        followupAm: 'ተጨማሪ ልታውቀው የምትፈልገው ሌላ የእንግሊዝኛ አባባል ወይም ጥያቄ አለ?'
+      };
+    }
+
+    // 6. Goodbyes
+    if (/bye|goodbye|see\s+you|ቻው|ደህና\s+ሁን|እንገናኝ/i.test(lower)) {
+      return {
+        correctedText: 'Goodbye! Take good care of yourself and see you soon.',
+        explanation: 'ስንሰናበት "Goodbye"፣ "See you later!" (በኋላ እንገናኝ) ወይም "Take care!" (ደህና ሁን / ተጠንቀቅ) ማለት የተለመደ ነው።',
+        phonetic: 'ጉድባይ! ቴክ ኬር ኦፍ ዩርሰልፍ ኤንድ ሲ ዩ ሱን።',
+        followupEn: 'Will we practice together again tomorrow?',
+        followupAm: 'ነገም በድጋሚ አብረን እንለማመዳለን አይደል?'
+      };
+    }
+
+    // 7. Feelings / Emotional States
+    if (/tired|exhausted|ደክሞኛል|ድካም/i.test(lower)) {
+      return {
+        correctedText: 'I feel very exhausted today, so I think I should get some rest.',
+        explanation: 'ድካምን ስንገልጽ "I am tired" ወይም የበለጠ ሲበረታ "I am exhausted" (በጣም ደክሞኛል) ማለት እንችላለን።',
+        phonetic: 'አይ ፊል ቬሪ ኤግዞስተድ ቱደይ።',
+        followupEn: 'Did you have a busy workday or long hours of study?',
+        followupAm: 'ዛሬ ብዙ የስራ ጫና ነበረብህ ወይስ የትምህርት ቆይታ?'
+      };
+    }
+
+    if (/happy|excited|glad|ደስተኛ|ደስ\s+ብሎኛል/i.test(lower)) {
+      return {
+        correctedText: 'I am feeling very joyful and optimistic today!',
+        explanation: 'ደስታን ስንገልጽ "I am happy"፣ "I am thrilled" (በጣም ተደስቻለሁ) ወይም "I am in a great mood" እንላለን።',
+        phonetic: 'አይ አም ፊሊንግ ቬሪ ጆይፉል ኤንድ ኦፕቲሚስቲክ ቱደይ!',
+        followupEn: 'What wonderful thing made you feel so happy today?',
+        followupAm: 'ዛሬ እንዲህ ደስተኛ ያደረገህ አስደሳች ክስተት ምንድን ነው?'
+      };
+    }
+
+    if (/hungry|starving|ርቦኛል|ራበኝ/i.test(lower)) {
+      return {
+        correctedText: 'I am starving! I would love to enjoy some fresh Ethiopian food.',
+        explanation: '"ርቦኛል" ስንል "I am hungry" እንላለን፤ በጣም ሲርበን ደግሞ "I am starving!" ማለት እንችላለን።',
+        phonetic: 'አይ አም ስታርቪንግ! አይ ውድ ላቭ ቱ ኢንጆይ ፍሬሽ ፉድ።',
+        followupEn: 'What is your absolute favorite food to eat: Injera with Doro Wat or Tibs?',
+        followupAm: 'የምትወደው ምርጥ ምግብ ምንድን ነው: ዶሮ ወጥ ወይስ ጥብስ?'
+      };
+    }
+
+    // 8. Irregular Past Tense Queries (e.g. "past tense of go", "past of see", "የ go ሀላፊ ጊዜ")
+    const pastMatch = lower.match(/(?:past\s+tense\s+of|past\s+of|ሀላፊ\s+ጊዜ\s+የ|የ\s*)(\w+)/i);
+    const verbCandidate = pastMatch ? pastMatch[1] : null;
+    if (verbCandidate && this.pastTenseMap[verbCandidate]) {
+      const info = this.pastTenseMap[verbCandidate];
+      return {
+        correctedText: `The past tense of "${verbCandidate}" is "${info.past}".`,
+        explanation: `የ "${verbCandidate}" ያለፈ ጊዜ (Past Tense) "${info.past}" ነው። ትርጉሙ፡ ${info.am}። ምሳሌ: "${info.ex}"`,
+        phonetic: `ዘ ፓስት ቴንስ ኦፍ ${verbCandidate} ኢዝ ${info.past}።`,
+        followupEn: `Can you create your own short sentence using the word "${info.past}"?`,
+        followupAm: `"${info.past}" የሚለውን ቃል ተጠቅመህ የራስህን አጭር ዓረፍተ ነገር መፃፍ ትችላለህ?`
+      };
+    }
+
+    // 9. Grammar Comparisons (Difference between X and Y)
+    if (/difference\s+between|ልዩነት|ልዩነታቸው/i.test(lower)) {
+      if (/make.*do|do.*make/i.test(lower)) {
+        return {
+          correctedText: 'The difference between "Make" and "Do" in English.',
+          explanation: '"Make" አዲስ ነገር ስንፈጥር ወይም ስንሰራ ያገለግላል (Make coffee, Make a decision, Make money)። "Do" ደግሞ ድርጊትን ወይም ግዴታን ስናከናውን ያገለግላል (Do homework, Do your best, Do exercise)።',
+          phonetic: 'ዘ ዲፈረንስ ቢትዊን ሜክ ኤንድ ዱ።',
+          followupEn: 'Would you say "make homework" or "do homework"?',
+          followupAm: '"make homework" ነው ወይስ "do homework" የሚባለው?'
+        };
+      }
+      if (/borrow.*lend|lend.*borrow/i.test(lower)) {
+        return {
+          correctedText: 'Difference between "Borrow" (to take) and "Lend" (to give).',
+          explanation: '"Borrow" ማለት መበደር (ገንዘብ ወይም እቃ ለጊዜው መውሰድ) ሲሆን "Lend" ማለት ደግሞ ማበደር (ለሌላ ሰው መስጠት) ነው። ምሳሌ: "Can I borrow your pen?" vs "Can you lend me ten dollars?"',
+          phonetic: 'ቦሮው (መበደር) vs ሌንድ (ማበደር)።',
+          followupEn: 'If you need money, do you ask a friend to lend you or borrow you?',
+          followupAm: 'ገንዘብ ስትፈልግ ጓደኛህን "lend" ወይስ "borrow" እንዲያደርግህ ነው የምትጠይቀው?'
+        };
+      }
+      if (/see.*look|look.*watch|see.*watch/i.test(lower)) {
+        return {
+          correctedText: 'Difference between See, Look, and Watch.',
+          explanation: '1. "See" = በአይናችን ድንገት ማየት (I see a bird)። 2. "Look" = ትኩረት ሰጥተን ወደ አንድ አቅጣጫ ማየት (Look at this picture!)። 3. "Watch" = የሚንቀሳቀስ ነገርን ተከታትሎ ማየት (Watch a movie / football match)።',
+          phonetic: 'ሲ (ማየት), ሉክ (መመልከት), ዋች (ተከታትሎ ማየት)።',
+          followupEn: 'Do you say "I watch a movie" or "I see a movie"?',
+          followupAm: '"watch a movie" ወይስ "look a movie" ነው የሚባለው?'
+        };
+      }
+      if (/for.*since|since.*for/i.test(lower)) {
+        return {
+          correctedText: 'Difference between "For" (duration) and "Since" (starting point).',
+          explanation: '"For" አጠቃላይ የጊዜ ቆይታን ያሳያል (For 3 years, For two hours)። "Since" ደግሞ ክስተቱ የተጀመረበትን ትክክለኛ መነሻ ቀን ወይም አመት ይጠቅሳል (Since 2020, Since yesterday morning)።',
+          phonetic: 'ፎር (የቆይታ ጊዜ) vs ሲንስ (የመነሻ ነጥብ)።',
+          followupEn: 'Have you lived in your town for five years, or since five years?',
+          followupAm: 'የትኛው ትክክል ነው: "for five years" ወይስ "since five years"?'
+        };
+      }
+    }
+
+    // 10. Translation of Specific Words / Expressions
+    if (/water|ውሃ/i.test(lower)) {
+      return {
+        correctedText: 'Could I please have a glass of fresh drinking water?',
+        explanation: '"ውሃ መጠጣት እፈልጋለሁ" ስንል በትህትና "Could I please have a glass of water?" ማለት ይመረጣል።',
+        phonetic: 'ኩድ አይ ፕሊዝ ሃቭ ኤ ግላስ ኦፍ ድሪንኪንግ ወተር?',
+        followupEn: 'Do you prefer cold water or room temperature water?',
+        followupAm: 'ቀዝቃዛ ውሃ ነው የምትወደው ወይስ ለብ ያለ?'
+      };
+    }
+
+    if (/money|ገንዘብ/i.test(lower)) {
+      return {
+        correctedText: 'Money management is an essential life skill.',
+        explanation: 'ገንዘብ በእንግሊዝኛ "Money" ይባላል። "How much money do you need?" (ምን ያህል ገንዘብ ያስፈልግሃል?)። ማስታወሻ: "Moneys" አይባልም፤ "Money" ነጠላም ብዙም ነው።',
+        phonetic: 'መኒ ማኔጅመንት ኢዝ አን ኢሴንሻል ላይፍ ስኪል。',
+        followupEn: 'Do you prefer paying for things with paper cash or mobile banking?',
+        followupAm: 'በጥሬ ብር መክፈል ትመርጣለህ ወይስ በሞባይል ባንኪንግ?'
+      };
+    }
+
+    if (/love|i\s+love\s+you|ፍቅር|እወድሻለሁ|እወድሃለሁ/i.test(lower)) {
+      return {
+        correctedText: 'I love you with all my heart and appreciate your kindness.',
+        explanation: '"እወድሃለሁ / እወድሻለሁ" በእንግሊዝኛ "I love you" ይባላል። "ፍቅር" ደግሞ "Love" ነው። "I care about you deeply" ማለትም ትልቅ ፍቅርን ያሳያል።',
+        phonetic: 'አይ ላቭ ዩ ዊዝ ኦል ማይ ሃርት።',
+        followupEn: 'Who is the most supportive person in your life that you love?',
+        followupAm: 'በህይወትህ ውስጥ በጣም የምትወደው እና የሚረዳህ ሰው ማን ነው?'
+      };
+    }
+
+    if (/bathroom|toilet|restroom|መጸዳጃ|ሽንት\s*ቤት/i.test(lower)) {
+      return {
+        correctedText: 'Excuse me, could you please tell me where the restroom is?',
+        explanation: 'መጸዳጃ ቤት መጠየቅ ሲፈልጉ በጨዋነት "Where is the restroom?" (በአሜሪካ) ወይም "Where is the toilet / washroom?" (በብሪታንያ) ይበሉ።',
+        phonetic: 'ኤክስኪውዝ ሚ፣ ኩድ ዩ ፕሊዝ ቴል ሚ ዌር ዘ ሬስትሩም ኢዝ?',
+        followupEn: 'Would you like to practice asking for directions to the lobby as well?',
+        followupAm: 'ወደ ዋናው አዳራሽ የሚያደርሰውን አቅጣጫ መጠየቅም መለማመድ ትፈልጋለህ?'
+      };
+    }
+
+    if (/cost|price|how\s+much|ዋጋው\s*ስንት/i.test(lower)) {
+      return {
+        correctedText: 'How much does this item cost, and do you accept digital payment?',
+        explanation: 'ዋጋ ስንጠይቅ "How much is this?" ወይም "How much does it cost?" እንላለን።',
+        phonetic: 'ሃው ማች ዳዝ ዚስ አይተም ኮስት?',
+        followupEn: 'Do you enjoy bargaining for prices at the local market?',
+        followupAm: 'በገበያ ውስጥ እቃ ስትገዛ ዋጋ መደራደር ያስደስትሃል?'
+      };
+    }
+
+    if (/time|ሰዓት\s*ስንት/i.test(lower)) {
+      return {
+        correctedText: 'Excuse me, could you please tell me what time it is right now?',
+        explanation: 'ሰዓት ስንጠይቅ "What time is it?" ወይም በትህትና "Could you tell me the time?" እንላለን።',
+        phonetic: 'ኤክስኪውዝ ሚ፣ ኩድ ዩ ፕሊዝ ቴል ሚ ዋት ታይም ኢት ኢዝ?',
+        followupEn: 'What is your most productive hour of the day?',
+        followupAm: 'በቀኑ ውስጥ በጣም ውጤታማ የምትሆንበት ሰዓት መቼ ነው?'
+      };
+    }
+
+    if (/weather|rain|sunny|አየር\s*ሁኔታ|ዝናብ/i.test(lower)) {
+      return {
+        correctedText: 'The weather today is very pleasant with a gentle breeze.',
+        explanation: 'የአየር ሁኔታን ለመጠየቅ "How is the weather today?" እንላለን። መልስ ለመስጠት: "It is sunny" (ፀሀያማ ነው) ወይም "It is raining" (እየዘነበ ነው)።',
+        phonetic: 'ዘ ዌዘር ቱደይ ኢዝ ቬሪ ፕሌዛንት።',
+        followupEn: 'Do you prefer warm sunny days or rainy cool afternoons?',
+        followupAm: 'ሞቃታማ ፀሀያማ ቀናትን ትመርጣለህ ወይስ ቀዝቃዛ የዝናብ አየር?'
+      };
+    }
+
+    // 11. Dynamic Interrogative Questions (What, Where, When, Why, Who, How, Can, Do, Is)
+    if (/^(what|where|when|why|who|how|can|could|do|does|did|is|are|will|would)\b/i.test(lower)) {
+      // Clean and capitalize the user's question
+      const cleanQ = raw.replace(/[?!.]+$/, '');
+      const firstWord = cleanQ.split(/\s+/)[0].toLowerCase();
+
+      let amHelp = '';
+      if (firstWord === 'what') amHelp = '"What" የሚያገለግለው ነገሮችን፣ ፅንሰ ሀሳቦችን ወይም ድርጊቶችን (ምን እንደሆኑ) ለመጠየቅ ነው።';
+      else if (firstWord === 'where') amHelp = '"Where" የሚያገለግለው ቦታንና አቅጣጫን (የት እንደሆነ) ለመጠየቅ ነው።';
+      else if (firstWord === 'when') amHelp = '"When" የሚያገለግለው ጊዜንና ቀጠሮን (መቼ እንደሆነ) ለመጠየቅ ነው።';
+      else if (firstWord === 'why') amHelp = '"Why" የሚያገለግለው ምክንያትና ማብራሪያን (ለምን እንደሆነ) ለመጠየቅ ነው። በ"Because..." ይመለሳል።';
+      else if (firstWord === 'who') amHelp = '"Who" የሚያገለግለው ሰውን ወይም ማንነትን (ማን እንደሆነ) ለመጠየቅ ነው።';
+      else if (firstWord === 'how') amHelp = '"How" የሚያገለግለው ሁኔታን፣ አሰራርን ወይም መጠንን (እንዴት እንደሆነ) ለመጠየቅ ነው።';
+      else amHelp = 'ጥያቄ ሲጠይቁ ረዳት ግስ (Auxiliary verb) ከባለቤቱ (Subject) በፊት ይቀድማል።';
+
+      return {
+        correctedText: `${cleanQ.charAt(0).toUpperCase() + cleanQ.slice(1)}? Here is how to express that clearly.`,
+        explanation: `ጥሩ እና ጠቃሚ ጥያቄ ነው! ${amHelp} እንዲህ አይነት ጥያቄዎችን በንግግር ውስጥ ደጋግሞ መጠቀም ንግግርዎን ያቀላጥፈዋል።`,
+        phonetic: 'ኩዌስችን ኤክስፕሬሽን ኢን ኢንግሊሽ።',
+        followupEn: 'Can you try rephrasing this question or giving an example answer?',
+        followupAm: 'ይህንን ጥያቄ በሌላ አገላለጽ ለመጠየቅ ወይም የራስህን መልስ ለመስጠት ትሞክራለህ?'
+      };
+    }
+
+    // 12. If user writes in Amharic (Translate & Respond dynamically)
     const hasAmharic = /[\u1200-\u137F]/.test(raw);
     if (hasAmharic) {
       return {
-        correctedText: 'I am practicing speaking English step by step every day.',
-        explanation: 'የፃፉት የአማርኛ ሀሳብ ወደ እንግሊዝኛ ሲተረጎም በተፈጥሯዊ አገላለጽ እንዲህ ይባላል። ደረጃ በደረጃ በየቀኑ አዳዲስ ቃላትንና ዓረፍተ ነገሮችን መለማመድ ውጤታማ ያደርግዎታል።',
-        phonetic: 'አይ አም ፕራክቲሲንግ ስፒኪንግ ኢንግሊሽ ስቴፕ ባይ ስቴፕ ኤቭሪ ዴይ።',
-        followupEn: 'Can you try to repeat this English sentence out loud right now?',
-        followupAm: 'ይህንን የእንግሊዝኛ ዓረፍተ ነገር አሁን ጮክ ብለህ ለመድገም ትሞክራለህ?'
+        correctedText: `You asked in Amharic: "${raw}". In English, you can say: "I would like to learn more about this topic."`,
+        explanation: `የፃፉት የአማርኛ ሀሳብ ("${raw}") ወደ እንግሊዝኛ ሲተረጎም በግልጽ እና በተፈጥሯዊ አገላለጽ መዋቀር ይችላል። ተጨማሪ ዝርዝር በእንግሊዝኛ ይፃፉልኝ እና አብረን እንለማመድ!`,
+        phonetic: 'አይ ውድ ላይክ ቱ ለርን ሞር አባውት ዚስ ቶፒክ።',
+        followupEn: 'Can you try writing this idea using simple English words?',
+        followupAm: 'ይህንን ሀሳብ በቀላል የእንግሊዝኛ ቃላት ለመፃፍ ትሞክራለህ?'
       };
     }
 
-    // 6. Generic conversational response with encouragement
+    // 13. Smart generic fallback tailored to the user's input words
+    const words = raw.split(/\s+/);
+    const firstFew = words.slice(0, 4).join(' ');
     return {
-      correctedText: `You said: "${raw}". A natural English expression is: "I would like to practice speaking English fluently."`,
-      explanation: 'ጥሩ ሙከራ ነው! ዓረፍተ ነገሮችን በሚመሰርቱበት ጊዜ የባለቤት (Subject)፣ የግስ (Verb) እና የተሳቢ (Object) ቅደም ተከተልን መጠበቅ ንግግርዎን ግልጽ ያደርገዋል።',
-      phonetic: 'አይ ውድ ላይክ ቱ ፕራክቲስ ስፒኪንግ ኢንግሊሽ ፍሉወንትሊ።',
-      followupEn: 'What is your favorite hobby when you have free time?',
-      followupAm: 'ትርፍ ጊዜ ሲኖርህ የምትወደው መዝናኛህ ምንድን ነው?'
+      correctedText: `Regarding "${firstFew}...", that is an interesting topic to discuss!`,
+      explanation: `ጥሩ የውይይት ርዕስ ነው! ስለ "${raw}" ስናወራ የቃላት አመራረጥንና የሰዋሰው ትስስርን ማስተካከል ንግግርዎን የበለጠ የተሟላ ያደርገዋል።`,
+      phonetic: 'ዛት ኢዝ አን ኢንተረስቲንግ ቶፒክ ቱ ዲስከስ!',
+      followupEn: `Could you tell me a little bit more about what you mean by "${firstFew}"?`,
+      followupAm: `ስለዚህ ጉዳይ ተጨማሪ ማብራሪያ በአጭር የእንግሊዝኛ ዓረፍተ ነገር ልትነግረኝ ትችላለህ?`
     };
   },
 
@@ -807,10 +1073,10 @@ const PapiAIEngine = {
     const systemInstruction = `You are "Papi" (ፓፒ), a warm, encouraging, and expert AI English teacher dedicated to helping native Amharic speakers master everyday conversational English.
 When the user sends a message in either English, Amharic, or mixed broken English, respond strictly in valid JSON format with the following keys:
 {
-  "correctedText": "The refined, natural, correct English expression",
+  "correctedText": "The refined, natural, correct English expression answering or improving their question directly",
   "explanation": "Clear explanation in Amharic explaining the grammar, word choice, and common mistakes made by Habesha learners",
   "phonetic": "Amharic Ge'ez transliteration of the English pronunciation (e.g. ሃው አር ዩ?)",
-  "followupEn": "An engaging follow-up practice question in English",
+  "followupEn": "An engaging follow-up practice question in English directly on the topic",
   "followupAm": "The Amharic translation/prompt for the follow-up question"
 }
 Ensure the Amharic is natural, fluent, and culturally sensitive. Return ONLY JSON.`;
